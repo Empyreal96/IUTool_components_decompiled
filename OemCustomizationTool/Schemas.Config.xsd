@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema targetNamespace="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           elementFormDefault="qualified"
+           xmlns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           xmlns:mstns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!--
+     Schema definition for Config XMLs.
+-->
+
+    <xs:element name="CustomizationConfig">
+        <xs:annotation>
+            <xs:documentation>
+                Root node for specifying customization mapping and configuration. Under this
+                node, the mappings for Microsoft owned and Partner owned components may be
+                specified.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="Mapping" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Mapping">
+        <xs:annotation>
+            <xs:documentation>
+                This is the root node for is used to specify customization mappings for
+                Microsoft and partner owned components. Use the Owner and OwnerType attributes
+                to indicate ownership.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="ComponentMapping"/>
+            </xs:sequence>
+            <xs:attribute name="OwnerType" type="ownerTypes" use="required"/>
+            <xs:attribute name="Owner" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ComponentMapping">
+        <xs:annotation>
+            <xs:documentation>
+                This element describes the component for which the mapping is being specified.
+                The ComponentName attribute is required and it uniquely identifies the component
+                for which the mapping is being specified.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element ref="SettingsGroupMapping"/>
+            </xs:sequence>
+            <xs:attribute name="ComponentName" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SettingsGroupMapping">
+        <xs:annotation>
+            <xs:documentation>
+                A group of settings within a component that are customizable. The optional
+                RegKeyBaseName attribute is to be used if the setting requires custom naming.
+                The presence of RegKeyBaseName indicates that the setting requires custom
+                naming. If specified, it is expected that the corresponding 'SettingGroup' element
+                in the config XML will have a 'Key' attribute.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element ref="SettingMapping"/>
+            </xs:sequence>
+            <xs:attribute name="RegKeyBaseName" type="xs:string"/>
+            <xs:attribute name="Partition" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SettingMapping">
+        <xs:annotation>
+            <xs:documentation>
+                The actual setting that can be customized, and its mapping, e.g., to it's corresponding
+                registry value. The 'Name' attribute is required and it uniquely identifies a customizable
+                setting within a component. The 'RegType' is also mandatory because it identifies the
+                registry type. In future releases, there is the possibility of adding support for non-registry
+                based customization. If so, the 'RegType' attribute may become optional. Leaving it mandatory
+                for now because we want to catch any errors in config files that do not specify one of the
+                supported registry value types.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Name" type="xs:string" use="required"/>
+            <xs:attribute name="RegType" type="regTypes" use ="required"/>
+            <xs:attribute name="RegKeyName" type="xs:string"/>
+            <xs:attribute name="RegName" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="regTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Standard registry value type enumeration.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REG_DWORD"/>
+            <xs:enumeration value="REG_QWORD"/>
+            <xs:enumeration value="REG_SZ"/>
+            <xs:enumeration value="REG_MULTI_SZ"/>
+            <xs:enumeration value="REG_BINARY"/>
+            <xs:enumeration value="REG_EXPAND_SZ"/>
+            <xs:enumeration value="REG_HEX"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ownerTypes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Microsoft"/>
+            <xs:enumeration value="OEM"/>
+            <xs:enumeration value="SiliconVendor"/>
+            <xs:enumeration value="MobileOperator"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

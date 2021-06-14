@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate" xmlns:mstns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DeviceLayout">
+      <xs:complexType>
+          <xs:all>
+            <xs:element name="Scope" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="RulesSectorSize" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+            <xs:element name="ExcludedScopes" minOccurs="0" maxOccurs="1">
+                  <xs:complexType>
+                      <xs:sequence>
+                          <xs:element name="Scope" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                      </xs:sequence>
+                  </xs:complexType>
+            </xs:element>
+            <xs:element name="Partitions" minOccurs="0" maxOccurs="1">
+                  <xs:complexType>
+                      <xs:sequence>
+                          <xs:element name="Partition" minOccurs="1" maxOccurs="unbounded">
+                              <xs:complexType>
+                                  <xs:all>
+                                      <xs:element name="Name" minOccurs="1" maxOccurs="1">
+                                          <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:maxLength value="36"/>
+                                            </xs:restriction>
+                                          </xs:simpleType>
+                                      </xs:element>
+                                      <xs:element name="Position" type="xs:string" minOccurs="0" maxOccurs="1" default="0" />
+                                      <xs:element name="PartitionType" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                      <xs:element name="Optional" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="Bootable" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="ReadOnly" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="Hidden" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="AttachDriveLetter" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="UseAllSpace" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="TotalSectors" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                      <xs:element name="MinFreeSectors" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                      <xs:element name="RequiresCompression" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="GeneratedFileOverheadSectors" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                      <xs:element name="UpdateType" type="xs:string" minOccurs="0" maxOccurs="1" default="Normal" />
+                                      <xs:element name="FileSystem" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                      <xs:element name="RequiredToFlash" type="xs:string" minOccurs="0" maxOccurs="1" default="false" />
+                                      <xs:element name="PrimaryPartition" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                      <xs:element name="SingleSectorAlignment" type="xs:string" minOccurs="0" maxOccurs="1" default="false"/>
+                                      <xs:element name="ByteAlignment" type="xs:string" minOccurs="0" maxOccurs="1" default="0" />
+                                      <!-- ClusterSize is specified in bytes. -->
+                                      <xs:element name="ClusterSize" type="xs:string" minOccurs="0" maxOccurs="1" default="0" />                                      
+                                  </xs:all>
+                              </xs:complexType>
+                          </xs:element>
+                      </xs:sequence>
+                  </xs:complexType>
+              </xs:element>
+              <xs:element name="SectorSize" type="xs:string" minOccurs="1" maxOccurs="1" />
+              <xs:element name="ChunkSize" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="DefaultPartitionByteAlignment" type="xs:string" minOccurs="0" maxOccurs="1" default="0" />
+          </xs:all>
+      </xs:complexType>
+  </xs:element>
+</xs:schema>

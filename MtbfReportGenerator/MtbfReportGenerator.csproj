@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF52}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MtbfReportGenerator</RootNamespace>
+    <AssemblyName>MtbfReportGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject>Microsoft.Phone.Tools.MtbfReportGenerator.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DH\Common\Argument.cs" />
+    <Compile Include="DH\Common\CommandLineParser.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\AppEvents.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\AppEvents_Event.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\Application.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\DocEvents.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\DocEvents_Event.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\Range.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\Sheets.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\Window.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\Workbook.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\WorkbookEvents.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\WorkbookEvents_Event.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\Workbooks.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\Worksheet.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\XlSaveAsAccessMode.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\_Application.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\_Workbook.cs" />
+    <Compile Include="Microsoft\Office\Interop\Excel\_Worksheet.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\ExcelReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\HtmlReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\IReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfDeviceReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfGroupReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfLogParserException.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfLoopReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfMix.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfMixCommand.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfMixGroup.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfReportDuration.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfSectionReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfTestLogReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfTestReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\MtbfTestResultReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\Program.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\ReportType.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\SummaryLog.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\SummaryLogEntry.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\XmlReport.cs" />
+    <Compile Include="Microsoft\Phone\Tools\MtbfReportGenerator\XsltHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="Microsoft\Phone\Tools\MtbfReportGenerator\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile CurrentProfile="(Default)" GeneratedClassNamespace="Microsoft.Phone.TestInfra" GeneratedClassName="Settings" xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Version" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.14</Value>
+    </Setting>
+    <Setting Name="DefaultLogDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">logs</Value>
+    </Setting>
+    <Setting Name="DefaultLogName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DeployTest.log</Value>
+    </Setting>
+    <Setting Name="DefaultFileExpiresInHours" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
+    <Setting Name="DefaultMacros" Type="System.String" Scope="User">
+      <Value Profile="(Default)">testdeployroot=\data\test;testshare=\\winphonelabs\securestorage\Blue\TestData;multimediashare=\\wdcmmcontent\blue; testlabconfigdirectory=Internal;OSGTestContentShare=\\redmond\1windows\testcontent</Value>
+    </Setting>
+    <Setting Name="CacheTimeoutInMs" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3600000</Value>
+    </Setting>
+    <Setting Name="CacheExpirationInDays" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="MaxConcurrentDownloads" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="MaxConcurrentLocalCopies" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="CopyRetryCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="CopyRetryDelayInMs" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3000</Value>
+    </Setting>
+    <Setting Name="MaxConcurrentReaders" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">96</Value>
+    </Setting>
+    <Setting Name="DownloadSemaphoreName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microsoft.Phone.CacheManager.DownloadSemaphoreName</Value>
+    </Setting>
+    <Setting Name="LocalCopySemaphoreName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microsoft.Phone.CacheManager.LocalCopySemaphoreName</Value>
+    </Setting>
+    <Setting Name="WinBuildSharePrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\winbuilds\release\</Value>
+    </Setting>
+    <Setting Name="PhoneBuildSharePrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\build\release\</Value>
+    </Setting>
+    <Setting Name="ShareAccessRetryCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="ShareAccessRetryDelayInMs" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="ExcludedSubDirsUnderPrebuiltPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bldinfo;sdp</Value>
+    </Setting>
+    <Setting Name="LocationCacheExpiresInDays" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

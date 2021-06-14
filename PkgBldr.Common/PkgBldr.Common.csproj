@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF55}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.CompPlat.PkgBldr</RootNamespace>
+    <AssemblyName>PkgBldr.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BuildFilterExpressionEvaluator" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BasePlugins\BcdStore.cs" />
+    <Compile Include="Base\Bld.cs" />
+    <Compile Include="Base\Build.cs" />
+    <Compile Include="Base\BuildPass.cs" />
+    <Compile Include="Base\CommonSettings.cs" />
+    <Compile Include="Base\CommonSettings.Designer.cs">
+      <DependentUpon>CommonSettings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Base\Config.cs" />
+    <Compile Include="Base\ConversionType.cs" />
+    <Compile Include="Base\CSI.cs" />
+    <Compile Include="Base\ExitStatus.cs" />
+    <Compile Include="Base\IMacroResolver.cs" />
+    <Compile Include="Base\KnownMacros.cs" />
+    <Compile Include="Base\Macro.cs" />
+    <Compile Include="Base\MacroDelegate.cs" />
+    <Compile Include="Base\MacroResolveOptions.cs" />
+    <Compile Include="Base\MacroResolver.cs" />
+    <Compile Include="Base\MacroStack.cs" />
+    <Compile Include="Base\MacroTable.cs" />
+    <Compile Include="Base\PKG.cs" />
+    <Compile Include="Base\PkgBldrHelpers.cs" />
+    <Compile Include="Base\PkgBldrLoader.cs" />
+    <Compile Include="Base\PkgConstants.cs" />
+    <Compile Include="Base\PkgGenException.cs" />
+    <Compile Include="Base\PkgGenProjectException.cs" />
+    <Compile Include="Base\PkgGenResources.cs" />
+    <Compile Include="Base\PkgPlugin.cs" />
+    <Compile Include="Base\PluginType.cs" />
+    <Compile Include="Base\Run.cs" />
+    <Compile Include="Base\SatelliteId.cs" />
+    <Compile Include="Base\SatelliteType.cs" />
+    <Compile Include="Base\SchemaSet.cs" />
+    <Compile Include="Base\Security\GlobalSecurity.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\AccessControlPolicy.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\Capability.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\ConstantStrings.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\DriverAccess.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\DriverAccessType.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\GlobalVariables.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\HashCalculator.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\PrivateResource.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\PrivateResourceClaimerType.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\RegistryValueType.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\ResourceType.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\SdRegType.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\SdRegValue.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\SidBuilder.cs" />
+    <Compile Include="Base\Security\SecurityPolicy\WnfValue.cs" />
+    <Compile Include="Base\Tools\BuildType.cs" />
+    <Compile Include="Base\Tools\CpuType.cs" />
+    <Compile Include="Base\Tools\PkgBldrCmd.cs" />
+    <Compile Include="Base\Tools\WowBuildType.cs" />
+    <Compile Include="Base\WM.cs" />
+    <Compile Include="Base\XSD.cs" />
+    <Compile Include="Interfaces\IPkgPlugin.cs" />
+    <Compile Include="Interfaces\IPkgProject.cs" />
+    <Compile Include="Interfaces\WellknownPkgAttributes.cs" />
+    <Compile Include="Plugins\WmToCsi\BootCritical.cs" />
+    <Compile Include="Plugins\WmToCsi\BootRecovery.cs" />
+    <Compile Include="Plugins\WmToCsi\COM.cs" />
+    <Compile Include="Plugins\WmToCsi\Configuration.cs" />
+    <Compile Include="Plugins\WmToCsi\Directories.cs" />
+    <Compile Include="Plugins\WmToCsi\Directory.cs" />
+    <Compile Include="Plugins\WmToCsi\Driver.cs" />
+    <Compile Include="Plugins\WmToCsi\Drivers.cs" />
+    <Compile Include="Plugins\WmToCsi\FailureActions.cs" />
+    <Compile Include="Plugins\WmToCsi\File.cs" />
+    <Compile Include="Plugins\WmToCsi\Files.cs" />
+    <Compile Include="Plugins\WmToCsi\FirewallRule.cs" />
+    <Compile Include="Plugins\WmToCsi\GenericCommands.cs" />
+    <Compile Include="Plugins\WmToCsi\Identity.cs" />
+    <Compile Include="Plugins\WmToCsi\Instrumentation.cs" />
+    <Compile Include="Plugins\WmToCsi\Language.cs" />
+    <Compile Include="Plugins\WmToCsi\Localization.cs" />
+    <Compile Include="Plugins\WmToCsi\Macro.cs" />
+    <Compile Include="Plugins\WmToCsi\Macros.cs" />
+    <Compile Include="Plugins\WmToCsi\Membership.cs" />
+    <Compile Include="Plugins\WmToCsi\Migration.cs" />
+    <Compile Include="Plugins\WmToCsi\Mof.cs" />
+    <Compile Include="Plugins\WmToCsi\Principal.cs" />
+    <Compile Include="Plugins\WmToCsi\Principals.cs" />
+    <Compile Include="Plugins\WmToCsi\PrivateResources.cs" />
+    <Compile Include="Plugins\WmToCsi\RegKey.cs" />
+    <Compile Include="Plugins\WmToCsi\RegKeys.cs" />
+    <Compile Include="Plugins\WmToCsi\RegValue.cs" />
+    <Compile Include="Plugins\WmToCsi\Service.cs" />
+    <Compile Include="Plugins\WmToCsi\ServiceGroup.cs" />
+    <Compile Include="Plugins\WmToCsi\ServiceTrigger.cs" />
+    <Compile Include="Plugins\WmToCsi\SystemProtection.cs" />
+    <Compile Include="Plugins\WmToCsi\Task.cs" />
+    <Compile Include="Plugins\WmToCsi\Tasks.cs" />
+    <Compile Include="Plugins\WmToCsi\TrustInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Base\Resources\Macros_CsiToPkg.xml" />
+    <EmbeddedResource Include="Base\Resources\Macros_CsiToWm.xml" />
+    <EmbeddedResource Include="Base\Resources\Macros_PkgToWm.xml" />
+    <EmbeddedResource Include="Base\Resources\Macros_Policy.xml" />
+    <EmbeddedResource Include="Base\Resources\Macros_WmToCsi.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageStorageServiceManaged\ImageStorageServiceManaged.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf43}</Project>
+      <Name>ImageStorageServiceManaged</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.WindowsPhone.Security.SecurityPolicyCompiler\Microsoft.WindowsPhone.Security.SecurityPolicyCompiler.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf50}</Project>
+      <Name>Microsoft.WindowsPhone.Security.SecurityPolicyCompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PkgBldr.Tools\PkgBldr.Tools.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf5b}</Project>
+      <Name>PkgBldr.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsCommon\ToolsCommon.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf68}</Project>
+      <Name>ToolsCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Base\CommonSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>CommonSettings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

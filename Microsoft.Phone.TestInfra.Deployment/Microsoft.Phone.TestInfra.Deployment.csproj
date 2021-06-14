@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft</RootNamespace>
+    <AssemblyName>Microsoft.Phone.TestInfra.Deployment</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Diagnostics\Telemetry\EventDescriptionAttribute.cs" />
+    <Compile Include="Diagnostics\Telemetry\EventProviderAttribute.cs" />
+    <Compile Include="Diagnostics\Telemetry\TelemetryEventSource.cs" />
+    <Compile Include="Phone\TestInfra\CacheManager.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\BaseLocator.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\BinaryDependency.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\BinaryLocator.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\CachedFileCopier.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\CacheManager.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\ConfigActionBase.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\ConfigCommand.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\ConfigCommandAggregator.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\Constants.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\Dependency.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\EnvironmentPathDependency.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\FileCopyHelper.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\FileExtensions.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\GeneralCacheGenerator.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\LogEventArgs.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\Logger.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\NativeMethods.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\NewDepXmlGenerator.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageDependency.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageDeployer.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageDeployerOutput.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageDeployerParameters.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageDescription.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageExtractor.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageInfo.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageLocator.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageManager.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PackageManagerConfiguration.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PathCleaner.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PathHelper.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PathType.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PerformanceCounters.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\PkgDepResolve.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\ReadWriteResourceLock.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\RegistryConfigAction.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\ReliableDirectory.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\ReliableFile.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\RemoteFileDependency.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\ResolvedDependency.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\SerializableDictionary.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\SymlinkHelper.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\TelemetryLogging.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\TimeoutHelper.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\WaitHandleEx.cs" />
+    <Compile Include="Phone\TestInfra\Deployment\WaitHandleHelper.cs" />
+    <Compile Include="Phone\TestInfra\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Phone\TestInfra\TimeoutHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Diagnostics.Tracing.EventSource\Microsoft.Diagnostics.Tracing.EventSource.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4c}</Project>
+      <Name>Microsoft.Diagnostics.Tracing.EventSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Phone.Test.TestMetadata\Microsoft.Phone.Test.TestMetadata.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4d}</Project>
+      <Name>Microsoft.Phone.Test.TestMetadata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Tools.IO\Microsoft.Tools.IO.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4f}</Project>
+      <Name>Microsoft.Tools.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PkgCommonManaged\PkgCommonManaged.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf5c}</Project>
+      <Name>PkgCommonManaged</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilityLibrary\UtilityLibrary.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf6c}</Project>
+      <Name>UtilityLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Phone\TestInfra\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

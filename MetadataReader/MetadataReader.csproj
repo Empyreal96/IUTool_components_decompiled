@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF4B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.MetadataReader</RootNamespace>
+    <AssemblyName>MetadataReader</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArrayFabricatedAddressMethodInfo.cs" />
+    <Compile Include="ArrayFabricatedConstructorInfo.cs" />
+    <Compile Include="ArrayFabricatedGetMethodInfo.cs" />
+    <Compile Include="ArrayFabricatedMethodInfo.cs" />
+    <Compile Include="ArrayFabricatedSetMethodInfo.cs" />
+    <Compile Include="AssemblyFactory.cs" />
+    <Compile Include="AssemblyMetaData.cs" />
+    <Compile Include="AssemblyNameHelper.cs" />
+    <Compile Include="AssemblyRef.cs" />
+    <Compile Include="CommonIdeHelper.cs" />
+    <Compile Include="ConstructorInfoRef.cs" />
+    <Compile Include="CorCallingConvention.cs" />
+    <Compile Include="CorFileFlags.cs" />
+    <Compile Include="CorManifestResourceFlags.cs" />
+    <Compile Include="CorTypeAttr.cs" />
+    <Compile Include="CustomModifiers.cs" />
+    <Compile Include="DefaultFactory.cs" />
+    <Compile Include="DefaultUniverse.cs" />
+    <Compile Include="GenericContext.cs" />
+    <Compile Include="HCORENUM.cs" />
+    <Compile Include="IMetadataAssemblyImport.cs" />
+    <Compile Include="IMetadataExtensionsPolicy.cs" />
+    <Compile Include="IMetadataImport.cs" />
+    <Compile Include="IMetadataImport2.cs" />
+    <Compile Include="IMetadataTables.cs" />
+    <Compile Include="IReflectionFactory.cs" />
+    <Compile Include="Loader.cs" />
+    <Compile Include="MetadataExtensionsPolicy20.cs" />
+    <Compile Include="MetadataOnlyArrayType.cs" />
+    <Compile Include="MetadataOnlyAssembly.cs" />
+    <Compile Include="MetadataOnlyCommonArrayType.cs" />
+    <Compile Include="MetadataOnlyCommonType.cs" />
+    <Compile Include="MetadataOnlyConstructorInfo.cs" />
+    <Compile Include="MetadataOnlyCustomAttributeData.cs" />
+    <Compile Include="MetadataOnlyEventInfo.cs" />
+    <Compile Include="MetadataOnlyFieldInfo.cs" />
+    <Compile Include="MetadataOnlyLocalVariableInfo.cs" />
+    <Compile Include="MetadataOnlyMethodBody.cs" />
+    <Compile Include="MetadataOnlyMethodBodyWorker.cs" />
+    <Compile Include="MetadataOnlyMethodInfo.cs" />
+    <Compile Include="MetadataOnlyModifiedType.cs" />
+    <Compile Include="MetadataOnlyModule.cs" />
+    <Compile Include="MetadataOnlyParameterInfo.cs" />
+    <Compile Include="MetadataOnlyPropertyInfo.cs" />
+    <Compile Include="MetadataOnlyTypeDef.cs" />
+    <Compile Include="MetadataOnlyTypeReference.cs" />
+    <Compile Include="MetadataOnlyTypeVariable.cs" />
+    <Compile Include="MetadataOnlyTypeVariableRef.cs" />
+    <Compile Include="MetadataOnlyVectorType.cs" />
+    <Compile Include="MethodFilter.cs" />
+    <Compile Include="MethodSignatureDescriptor.cs" />
+    <Compile Include="NamedArgumentType.cs" />
+    <Compile Include="OpenGenericContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProxyGenericType.cs" />
+    <Compile Include="PseudoCustomAttributes.cs" />
+    <Compile Include="SignatureBlob.cs" />
+    <Compile Include="SignatureComparer.cs" />
+    <Compile Include="SignatureUtil.cs" />
+    <Compile Include="SimpleParameterInfo.cs" />
+    <Compile Include="StringBuilderPool.cs" />
+    <Compile Include="TypeNameQuoter.cs" />
+    <Compile Include="TypeProxy.cs" />
+    <Compile Include="TypeSignatureDescriptor.cs" />
+    <Compile Include="TypeSpec.cs" />
+    <Compile Include="UnmanagedStringMemoryHandle.cs" />
+    <Compile Include="UnresolvedTypeName.cs" />
+    <Compile Include="UnusedIntPtr.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Tools.IO\Microsoft.Tools.IO.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4f}</Project>
+      <Name>Microsoft.Tools.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReflectionAdds\ReflectionAdds.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf65}</Project>
+      <Name>ReflectionAdds</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TypeSystemMock\TypeSystemMock.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf69}</Project>
+      <Name>TypeSystemMock</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.WindowsPhone.ImageUpdate.PkgGenCommon</RootNamespace>
+    <AssemblyName>PkgGenCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CabApiWrapper">
+      <HintPath>C:\iutool2015\CabApiWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseComponents\ApplicationBuilder.cs" />
+    <Compile Include="BaseComponents\AppResourceBuilder.2.cs" />
+    <Compile Include="BaseComponents\AppResourceBuilder.cs" />
+    <Compile Include="BaseComponents\AuthenticationCapabitities.cs" />
+    <Compile Include="BaseComponents\AuthenticationLevel.cs" />
+    <Compile Include="BaseComponents\BCDStoreBuilder.cs" />
+    <Compile Include="BaseComponents\BinaryPartitionBuilder.cs" />
+    <Compile Include="BaseComponents\ComServerBuilder.cs" />
+    <Compile Include="BaseComponents\DriverBuilder.cs" />
+    <Compile Include="BaseComponents\ErrorControlOption.cs" />
+    <Compile Include="BaseComponents\FailureActionType.cs" />
+    <Compile Include="BaseComponents\FileBuilder.2.cs" />
+    <Compile Include="BaseComponents\FileBuilder.cs" />
+    <Compile Include="BaseComponents\FileGroupBuilder.cs" />
+    <Compile Include="BaseComponents\FilterGroupBuilder.cs" />
+    <Compile Include="BaseComponents\ImpersonationLevel.cs" />
+    <Compile Include="BaseComponents\Internal\ApplicationPkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\AppResourcePkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\BCDStorePkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\BinaryPartitionPkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\BuildPass.cs" />
+    <Compile Include="BaseComponents\Internal\CertStoreBuilder.cs" />
+    <Compile Include="BaseComponents\Internal\ComBase.cs" />
+    <Compile Include="BaseComponents\Internal\ComClass.cs" />
+    <Compile Include="BaseComponents\Internal\ComDll.cs" />
+    <Compile Include="BaseComponents\Internal\ComInterface.cs" />
+    <Compile Include="BaseComponents\Internal\ComPkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\DriverPkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\FailureAction.cs" />
+    <Compile Include="BaseComponents\Internal\FailureActionsPkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\FileGroup.cs" />
+    <Compile Include="BaseComponents\Internal\FileInfo.cs" />
+    <Compile Include="BaseComponents\Internal\FilterGroup.cs" />
+    <Compile Include="BaseComponents\Internal\IPackageSetBuilder.cs" />
+    <Compile Include="BaseComponents\Internal\OSComponentPkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\PackageGenerator.cs" />
+    <Compile Include="BaseComponents\Internal\PackageProject.cs" />
+    <Compile Include="BaseComponents\Internal\PackageSetBuilder.cs" />
+    <Compile Include="BaseComponents\Internal\PackageSetBuilderBase.cs" />
+    <Compile Include="BaseComponents\Internal\PackageTocBuilder.cs" />
+    <Compile Include="BaseComponents\Internal\PkgElement.cs" />
+    <Compile Include="BaseComponents\Internal\PkgFile.cs" />
+    <Compile Include="BaseComponents\Internal\PkgObjectBuilder.cs" />
+    <Compile Include="BaseComponents\Internal\Reference.cs" />
+    <Compile Include="BaseComponents\Internal\RegGroup.cs" />
+    <Compile Include="BaseComponents\Internal\RegImport.cs" />
+    <Compile Include="BaseComponents\Internal\RegistryKey.cs" />
+    <Compile Include="BaseComponents\Internal\RegValue.cs" />
+    <Compile Include="BaseComponents\Internal\RestrictionType.cs" />
+    <Compile Include="BaseComponents\Internal\Security.cs" />
+    <Compile Include="BaseComponents\Internal\ServicePkgObject.cs" />
+    <Compile Include="BaseComponents\Internal\SvcDll.cs" />
+    <Compile Include="BaseComponents\Internal\SvcEntry.cs" />
+    <Compile Include="BaseComponents\Internal\SvcExe.cs" />
+    <Compile Include="BaseComponents\Internal\SvcHostGroup.cs" />
+    <Compile Include="BaseComponents\OSComponentBuilder.2.cs" />
+    <Compile Include="BaseComponents\OSComponentBuilder.cs" />
+    <Compile Include="BaseComponents\PackageLogger.cs" />
+    <Compile Include="BaseComponents\PackageWrapper.cs" />
+    <Compile Include="BaseComponents\PkgObject.cs" />
+    <Compile Include="BaseComponents\PkgPlugin.cs" />
+    <Compile Include="BaseComponents\PkgXmlException.cs" />
+    <Compile Include="BaseComponents\RegistryKeyBuilder.cs" />
+    <Compile Include="BaseComponents\RegistryKeyGroupBuilder.cs" />
+    <Compile Include="BaseComponents\SatelliteId.cs" />
+    <Compile Include="BaseComponents\SatelliteType.cs" />
+    <Compile Include="BaseComponents\ServiceBuilder.cs" />
+    <Compile Include="BaseComponents\ServiceStartMode.cs" />
+    <Compile Include="BaseComponents\ServiceType.cs" />
+    <Compile Include="BaseComponents\SvcHostGroupBuilder.cs" />
+    <Compile Include="BaseComponents\ThreadingModel.cs" />
+    <Compile Include="BaseComponents\XmlToLinqExtensions.cs" />
+    <Compile Include="BasePlugins\Application.cs" />
+    <Compile Include="BasePlugins\AppResource.cs" />
+    <Compile Include="BasePlugins\BCDStore.cs" />
+    <Compile Include="BasePlugins\BinaryPartition.cs" />
+    <Compile Include="BasePlugins\ComServer.cs" />
+    <Compile Include="BasePlugins\Driver.cs" />
+    <Compile Include="BasePlugins\ModernComActivation.cs" />
+    <Compile Include="BasePlugins\ModernComThreading.cs" />
+    <Compile Include="BasePlugins\ModernComTrustLevel.cs" />
+    <Compile Include="BasePlugins\OSComponent.cs" />
+    <Compile Include="BasePlugins\Service.cs" />
+    <Compile Include="BasePlugins\SvcHostGroup.cs" />
+    <Compile Include="BasePlugins\WinRTHost.cs" />
+    <Compile Include="DevPropKey.cs" />
+    <Compile Include="DevPropType.cs" />
+    <Compile Include="DriverPackageEnumFilesFlag.cs" />
+    <Compile Include="DriverPackageOpenFlag.cs" />
+    <Compile Include="DriverStoreConfigureFlags.cs" />
+    <Compile Include="DriverStoreImportFlag.cs" />
+    <Compile Include="DriverStoreObjectType.cs" />
+    <Compile Include="DriverStoreOfflineAddDriverPackageFlags.cs" />
+    <Compile Include="DriverStoreOpenFlag.cs" />
+    <Compile Include="DriverStorePublishFlag.cs" />
+    <Compile Include="DriverStoreReflectCriticalFlag.cs" />
+    <Compile Include="DriverStoreReflectFlag.cs" />
+    <Compile Include="DriverStoreSetObjectPropertyFlag.cs" />
+    <Compile Include="DrvStore.cs" />
+    <Compile Include="IMacroResolver.cs" />
+    <Compile Include="InfFile.cs" />
+    <Compile Include="InfFileConverter.cs" />
+    <Compile Include="Interfaces\IPackageGenerator.cs" />
+    <Compile Include="Interfaces\IPkgLogger.cs" />
+    <Compile Include="Interfaces\IPkgPlugin.cs" />
+    <Compile Include="Interfaces\IPkgProject.cs" />
+    <Compile Include="Interfaces\WellknownPkgAttributes.cs" />
+    <Compile Include="ISecurityPolicyCompiler.cs" />
+    <Compile Include="KnownMacros.cs" />
+    <Compile Include="Macro.cs" />
+    <Compile Include="MacroDelegate.cs" />
+    <Compile Include="MacroResolveOptions.cs" />
+    <Compile Include="MacroResolver.cs" />
+    <Compile Include="MacroStack.cs" />
+    <Compile Include="MacroTable.cs" />
+    <Compile Include="MiscUtils.cs" />
+    <Compile Include="ObjectType.cs" />
+    <Compile Include="PkgGenException.cs" />
+    <Compile Include="PkgGenProjectException.cs" />
+    <Compile Include="PkgGenResources.cs" />
+    <Compile Include="ProcessorArchitecture.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlConstants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BasePlugins\xsd" />
+    <EmbeddedResource Include="PkgGen\cfg.xml" />
+    <EmbeddedResource Include="ProjSchema.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageStorageServiceManaged\ImageStorageServiceManaged.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf43}</Project>
+      <Name>ImageStorageServiceManaged</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Phone.Test.TestMetadata\Microsoft.Phone.Test.TestMetadata.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4d}</Project>
+      <Name>Microsoft.Phone.Test.TestMetadata</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PkgCommonManaged\PkgCommonManaged.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf5c}</Project>
+      <Name>PkgCommonManaged</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsCommon\ToolsCommon.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf68}</Project>
+      <Name>ToolsCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

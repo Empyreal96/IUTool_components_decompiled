@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+
+<xs:schema targetNamespace="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           elementFormDefault="unqualified"
+           xmlns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           xmlns:mstns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!--
+     Schema definition for the Registry XMLs used by the internal 
+     registry helper code. It is based on the registry entries schema 
+     used in WP8 packaging XMLs, as shown below as an example:
+
+        <Regkeys>
+          <Regkey KeyName="$(hkcu.root)\ControlPanel\Sounds\Camera">
+            <RegValue Name="Locked" Value="1" Type="REG_DWORD" />
+          </Regkey>
+          <Regkey KeyName="$(hkcu.root)\ControlPanel\Sounds\OEMRingtones">
+            <RegValue Name="OEMCustom1.wma" Value="localizedStrings.dll#101" Type="REG_SZ" />
+            <RegValue Name="OEMCustom2.wma" Value="localizedStrings.dll#102" Type="REG_SZ" />
+          </Regkey>
+          <Regkey KeyName="$(hklm.root)\International\Langsettings\MUILangWithLocale\0409">
+            <RegValue Name="UserLocale" Value="080c" Type="REG_SZ" />
+            <RegValue Name="SystemLocale" Value="0c0c" Type="REG_SZ" />
+          </Regkey>
+        </Regkeys>
+-->
+
+    <xs:element name="OemCustomizationToolRegkeys">
+        <xs:annotation>
+            <xs:documentation>
+                Root.
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+                <xs:element ref="RegKeys"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RegKeys">
+        <xs:annotation>
+            <xs:documentation>
+                Regkey container.
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="RegKey"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="RegKey">
+        <xs:annotation>
+            <xs:documentation>
+                The registry key definition.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="RegValue"/>
+            </xs:sequence>
+            <xs:attribute name="KeyName" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RegValue">
+        <xs:annotation>
+            <xs:documentation>
+                The registry value. The 'Name' attribute specifies the 
+                name of the registry value. The 'Value' attribtute specifies
+                the actual value, and the 'Type' attribute specifies the type,
+                which must be one of the known types. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="Name" type="xs:string" use="required"/>
+            <xs:attribute name="Type" type="regTypes" use ="required"/>
+            <xs:attribute name="Value" type="xs:string" use ="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="regTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Standard registry value type enumeration.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REG_DWORD"/>
+            <xs:enumeration value="REG_QWORD"/>
+            <xs:enumeration value="REG_SZ"/>
+            <xs:enumeration value="REG_MULTI_SZ"/>
+            <xs:enumeration value="REG_BINARY"/>
+            <xs:enumeration value="REG_EXPAND_SZ"/>
+            <xs:enumeration value="REG_HEX"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
+

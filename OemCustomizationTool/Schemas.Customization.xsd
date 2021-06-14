@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+
+<xs:schema targetNamespace="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           elementFormDefault="qualified"
+           xmlns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           xmlns:mstns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!--
+     Schema definition for the Customization XMLs.
+-->
+
+  <xs:element name="OEMCustomizationPackage">
+    <xs:annotation>
+      <xs:documentation>
+        Root node for specifying customizations. The attributes are
+        used for customization package generation purposes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="include" maxOccurs="unbounded"/>
+        <xs:element ref="Customization" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:choice>
+      <xs:attribute name="Owner" type="xs:string" use="required"/>
+      <xs:attribute name="OwnerType" type="customizationPkgOwnerTypes" use="required"/>
+      <xs:attribute name="ReleaseType" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="include">
+    <xs:annotation>
+      <xs:documentation>
+        This allows the inclusion of external customizations. Inclusion order is
+        important for conflict resolution of duplicates. The last entry in the
+        include heirarchy wins if there are conflicts.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="href" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Customization">
+    <xs:annotation>
+      <xs:documentation>
+        The root node for a group of customizations. Customizations are grouped
+        by owner type at this node, e.g., all customizations of Microsoft
+        owned components should have OwnerType="Microsoft", and so on.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="Component"/>
+      </xs:sequence>
+      <xs:attribute name="OwnerType" type="settingOwnerTypes" use="required"/>
+      <xs:attribute name="Owner" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Component">
+    <xs:annotation>
+      <xs:documentation>
+        The component that an OEM wishes to customize. The ComponentName
+        attribute is required and must map to a component in the config.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="SettingsGroup"/>
+      </xs:sequence>
+      <xs:attribute name="ComponentName" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SettingsGroup">
+    <xs:annotation>
+      <xs:documentation>
+        A group of settings to customize. It can contain any number
+        of Setting elements. The 'Key' attribute is optional. It is
+        intended for those settings that require custom naming. See
+        config schema for details on custom names.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="Setting"/>
+      </xs:sequence>
+      <xs:attribute name="Key" type="xs:string"/>
+      <xs:attribute name="Partition" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Setting">
+    <xs:annotation>
+      <xs:documentation>
+        The actual setting to customize. The Name and Value attributes
+        are required and should map to the config. The CustomName
+        attribute is optional. It is intended for those settings that
+        require custom naming. See config schema for details on custom names.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+      <xs:attribute name="Value" type="xs:string" use="required"/>
+      <xs:attribute name="CustomName" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="settingOwnerTypes">
+      <xs:annotation>
+          <xs:documentation>
+              Specifies the expected owner types for the setting.
+          </xs:documentation>
+      </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Microsoft"/>
+      <xs:enumeration value="OEM"/>
+      <xs:enumeration value="SiliconVendor"/>
+      <xs:enumeration value="MobileOperator"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+    <xs:simpleType name="customizationPkgOwnerTypes">
+        <xs:annotation>
+            <xs:documentation>
+                Specifies the expected owner types for the customization package.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OEM"/>
+            <xs:enumeration value="SiliconVendor"/>
+            <xs:enumeration value="MobileOperator"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

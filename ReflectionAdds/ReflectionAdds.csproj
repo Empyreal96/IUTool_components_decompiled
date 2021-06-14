@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF65}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ReflectionAdds</RootNamespace>
+    <AssemblyName>ReflectionAdds</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Microsoft\MetadataReader\Internal\Debug.cs" />
+    <Compile Include="Microsoft\MetadataReader\Internal\HashSet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Reflection\Adds\AssemblyProxy.cs" />
+    <Compile Include="System\Reflection\Adds\ConstructorInfoProxy.cs" />
+    <Compile Include="System\Reflection\Adds\CorElementType.cs" />
+    <Compile Include="System\Reflection\Adds\ElementTypeUtility.cs" />
+    <Compile Include="System\Reflection\Adds\EmbeddedBlobPointer.cs" />
+    <Compile Include="System\Reflection\Adds\FileMapping.cs" />
+    <Compile Include="System\Reflection\Adds\Helpers.cs" />
+    <Compile Include="System\Reflection\Adds\IAssembly2.cs" />
+    <Compile Include="System\Reflection\Adds\IFieldInfo2.cs" />
+    <Compile Include="System\Reflection\Adds\ImageHelper.cs" />
+    <Compile Include="System\Reflection\Adds\ImageType.cs" />
+    <Compile Include="System\Reflection\Adds\IModule2.cs" />
+    <Compile Include="System\Reflection\Adds\IMutableTypeUniverse.cs" />
+    <Compile Include="System\Reflection\Adds\ITypeProxy.cs" />
+    <Compile Include="System\Reflection\Adds\ITypeReference.cs" />
+    <Compile Include="System\Reflection\Adds\ITypeSignatureBlob.cs" />
+    <Compile Include="System\Reflection\Adds\ITypeSpec.cs" />
+    <Compile Include="System\Reflection\Adds\ITypeUniverse.cs" />
+    <Compile Include="System\Reflection\Adds\MetadataDispenser.cs" />
+    <Compile Include="System\Reflection\Adds\MetadataFile.cs" />
+    <Compile Include="System\Reflection\Adds\MetadataFileAndRvaResolver.cs" />
+    <Compile Include="System\Reflection\Adds\MetadataTable.cs" />
+    <Compile Include="System\Reflection\Adds\NativeMethods.cs" />
+    <Compile Include="System\Reflection\Adds\ResolveAssemblyNameEventArgs.cs" />
+    <Compile Include="System\Reflection\Adds\Resources.cs" />
+    <Compile Include="System\Reflection\Adds\SimpleUniverse.cs" />
+    <Compile Include="System\Reflection\Adds\Token.cs" />
+    <Compile Include="System\Reflection\Adds\TokenType.cs" />
+    <Compile Include="System\Reflection\Adds\TypeNameParser.cs" />
+    <Compile Include="System\Reflection\Adds\UnresolvedAssemblyException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Tools.IO\Microsoft.Tools.IO.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4f}</Project>
+      <Name>Microsoft.Tools.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TypeSystemMock\TypeSystemMock.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf69}</Project>
+      <Name>TypeSystemMock</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

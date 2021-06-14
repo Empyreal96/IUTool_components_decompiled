@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile CurrentProfile="(Default)" GeneratedClassNamespace="Microsoft.Phone.Tools.MtbfReportGenerator.Properties" GeneratedClassName="Settings" xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UnknownSectionName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NA</Value>
+    </Setting>
+    <Setting Name="DefaultHtmlTemplate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MtbfReportHtml.xslt</Value>
+    </Setting>
+    <Setting Name="ExcelTimeSheetName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Stability Time Per Section</Value>
+    </Setting>
+    <Setting Name="ExcelCompletionSheetName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Completion Percentage</Value>
+    </Setting>
+    <Setting Name="ExcelMaxDevices" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="ExcelMaxLoops" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="ExcelMaxSections" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="ExcelTimeFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">h\:mm\:ss</Value>
+    </Setting>
+    <Setting Name="MtbfLogsFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mtbf</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

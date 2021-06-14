@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF4D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.Phone.Test.TestMetadata</RootNamespace>
+    <AssemblyName>Microsoft.Phone.Test.TestMetadata</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandLine\Command.cs" />
+    <Compile Include="CommandLine\CommandAliasAttribute.cs" />
+    <Compile Include="CommandLine\CommandAttribute.cs" />
+    <Compile Include="CommandLine\CommandException.cs" />
+    <Compile Include="CommandLine\CommandFactory.cs" />
+    <Compile Include="CommandLine\CommandOption.cs" />
+    <Compile Include="CommandLine\CommandOptionCollection.cs" />
+    <Compile Include="CommandLine\CommandSpecification.cs" />
+    <Compile Include="CommandLine\CommandSpecificationCollection.cs" />
+    <Compile Include="CommandLine\DotNetOptionParser.cs" />
+    <Compile Include="CommandLine\FormatUtility.cs" />
+    <Compile Include="CommandLine\HelpCommandBase.cs" />
+    <Compile Include="CommandLine\OptionAttribute.cs" />
+    <Compile Include="CommandLine\OptionParser.cs" />
+    <Compile Include="CommandLine\OptionSpecification.cs" />
+    <Compile Include="CommandLine\OptionSpecificationCollection.cs" />
+    <Compile Include="CommandLine\OptionSpecificationException.cs" />
+    <Compile Include="CommandLine\OptionValueType.cs" />
+    <Compile Include="CommandLine\StandardOptionParser.cs" />
+    <Compile Include="CommandLine\UsageException.cs" />
+    <Compile Include="Helper\BinaryDependencyType.cs" />
+    <Compile Include="Helper\BinaryFile.cs" />
+    <Compile Include="Helper\Contract.cs" />
+    <Compile Include="Helper\DelayLoadImportDescriptor.cs" />
+    <Compile Include="Helper\DependencySuppression.cs" />
+    <Compile Include="Helper\ImageCor20Header.cs" />
+    <Compile Include="Helper\ImageDataDirectory.cs" />
+    <Compile Include="Helper\ImageExportDirectory.cs" />
+    <Compile Include="Helper\ImageFileHeader.cs" />
+    <Compile Include="Helper\ImageImportDescriptor.cs" />
+    <Compile Include="Helper\ImageNtHeaders.cs" />
+    <Compile Include="Helper\ImageOptionalHeader32.cs" />
+    <Compile Include="Helper\NativeMethods.cs" />
+    <Compile Include="Helper\PortableExecutable.cs" />
+    <Compile Include="Helper\PortableExecutableDependency.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="ObjectModel\BinaryDependency.cs" />
+    <Compile Include="ObjectModel\Dependency.cs" />
+    <Compile Include="ObjectModel\EnvironmentPathDependnecy.cs" />
+    <Compile Include="ObjectModel\Metadata.cs" />
+    <Compile Include="ObjectModel\PackageDependency.cs" />
+    <Compile Include="ObjectModel\RemoteFileDependency.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Schema\testmetadata.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MetadataReader\MetadataReader.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4b}</Project>
+      <Name>MetadataReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Tools.IO\Microsoft.Tools.IO.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf4f}</Project>
+      <Name>Microsoft.Tools.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReflectionAdds\ReflectionAdds.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf65}</Project>
+      <Name>ReflectionAdds</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TypeSystemMock\TypeSystemMock.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf69}</Project>
+      <Name>TypeSystemMock</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

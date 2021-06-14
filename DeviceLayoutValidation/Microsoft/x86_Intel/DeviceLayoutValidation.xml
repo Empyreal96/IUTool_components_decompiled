@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DeviceLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate">
+  <!-- CPUTYPE:SV:SOC:DEVICE:RELEASETYPE:VERSIONTAG - must use C#-RegEx syntax in wild cards -->
+  <Scope>x86:intel:.+:.+:.+:WindowsMobile:10:.+</Scope>
+  <RulesSectorSize>512</RulesSectorSize>
+  <ExcludedScopes>
+     <Scope>x86:intel:fake.*:.+:.+:.+:.+</Scope>
+     <Scope>x86:intel:mbm.*:.+:.+:.+:.+</Scope>
+     <Scope>x86:intel:vm.*:.+:.+:.+:.+</Scope>
+  </ExcludedScopes>
+
+  <Partitions>
+    <Partition>
+      <Name>DPP</Name>
+      <PartitionType>{ebd0a0a2-b9e5-4433-87c0-68b6b72699c7}</PartitionType>
+      <TotalSectors>greater_or_equal(16384)</TotalSectors>
+      <FileSystem>allow_default_plus_equal(FAT)</FileSystem>
+      <RequiredToFlash>true</RequiredToFlash>
+      <Optional>true</Optional>
+    </Partition>
+    <Partition>
+      <Name>EFI</Name>
+      <FileSystem>FAT</FileSystem>
+      <TotalSectors>*ANY*</TotalSectors>
+      <PartitionType>{C12A7328-F81F-11D2-BA4B-00A0C93EC93B}</PartitionType>
+      <Bootable>*ANY*</Bootable>
+      <RequiredToFlash>true</RequiredToFlash>
+      <Optional>true</Optional>
+    </Partition>
+    <Partition>
+      <Name>EFIESP</Name>
+      <FileSystem>FAT</FileSystem>
+      <TotalSectors>greater_or_equal(65536)</TotalSectors>
+      <PartitionType>{ebd0a0a2-b9e5-4433-87c0-68b6b72699c7}</PartitionType>
+      <Bootable>allow_default_plus_equal(true)</Bootable>
+      <ByteAlignment>*ANY*</ByteAlignment>
+      <RequiredToFlash>true</RequiredToFlash>
+    </Partition>
+    <Partition>
+      <Name>BP</Name>
+      <TotalSectors>greater_or_equal(2048)</TotalSectors>
+      <PartitionType>{ebd0a0a2-b9e5-4433-87c0-68b6b72699c7}</PartitionType>
+      <Bootable>true</Bootable>
+      <RequiredToFlash>true</RequiredToFlash>
+      <SingleSectorAlignment>true</SingleSectorAlignment>
+      <Optional>true</Optional>
+    </Partition>
+    <Partition>
+      <Name>MainOS</Name>
+      <PartitionType>{ebd0a0a2-b9e5-4433-87c0-68b6b72699c7}</PartitionType>
+      <ByteAlignment>*ANY*</ByteAlignment>
+      <RequiresCompression>*ANY*</RequiresCompression>
+      <MinFreeSectors>between(102400,921600)</MinFreeSectors>
+      <TotalSectors>*ANY*</TotalSectors>
+      <ClusterSize>allow_default_plus_equal(0x1000)</ClusterSize>
+      <FileSystem>NTFS</FileSystem>
+    </Partition>
+    <Partition>
+      <Name>Data</Name>
+      <PartitionType>{ebd0a0a2-b9e5-4433-87c0-68b6b72699c7}</PartitionType>
+      <ByteAlignment>*ANY*</ByteAlignment>
+      <ClusterSize>allow_default_plus_equal(0x4000)</ClusterSize>
+      <TotalSectors>allow_default_plus_greater_or_equal(921600)</TotalSectors>
+      <UseAllSpace>true</UseAllSpace>
+      <FileSystem>NTFS</FileSystem>
+      <Position>-1</Position>
+    </Partition>
+  </Partitions>
+  <SectorSize>one_of(512,4096)</SectorSize>
+  <ChunkSize>*ANY*</ChunkSize>
+  <DefaultPartitionByteAlignment>*ANY*</DefaultPartitionByteAlignment>
+</DeviceLayout>
+

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF5C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.WindowsPhone.ImageUpdate.PkgCommon</RootNamespace>
+    <AssemblyName>PkgCommonManaged</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CabApiWrapper">
+      <HintPath>C:\iutool2015\CabApiWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuildPathOption.cs" />
+    <Compile Include="BuildType.cs" />
+    <Compile Include="BuildTypeParser.cs" />
+    <Compile Include="CabArchiver.cs" />
+    <Compile Include="CpuId.cs" />
+    <Compile Include="CpuIdParser.cs" />
+    <Compile Include="DELTA_FILE_TYPE.cs" />
+    <Compile Include="DELTA_FLAG_TYPE.cs" />
+    <Compile Include="DELTA_INPUT.cs" />
+    <Compile Include="DiffError.cs" />
+    <Compile Include="DiffFileEntry.cs" />
+    <Compile Include="DiffOptions.cs" />
+    <Compile Include="DiffPkg.cs" />
+    <Compile Include="DiffPkgBuilder.cs" />
+    <Compile Include="DiffPkgManifest.cs" />
+    <Compile Include="DiffType.cs" />
+    <Compile Include="FBMerger.cs" />
+    <Compile Include="FileEntry.cs" />
+    <Compile Include="FileEntryBase.cs" />
+    <Compile Include="FileType.cs" />
+    <Compile Include="IDiffEntry.cs" />
+    <Compile Include="IDiffPkg.cs" />
+    <Compile Include="IFileEntry.cs" />
+    <Compile Include="IPkgBuilder.cs" />
+    <Compile Include="IPkgFileSigner.cs" />
+    <Compile Include="IPkgInfo.cs" />
+    <Compile Include="MergeErrors.cs" />
+    <Compile Include="MergeGroup.cs" />
+    <Compile Include="MergeResult.cs" />
+    <Compile Include="MergeWorker.cs" />
+    <Compile Include="MSDeltaInterOp.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="OwnerType.cs" />
+    <Compile Include="Package.cs" />
+    <Compile Include="PackageException.cs" />
+    <Compile Include="PackageStyle.cs" />
+    <Compile Include="PackageTools.cs" />
+    <Compile Include="PackageType.cs" />
+    <Compile Include="PkgBuilder.cs" />
+    <Compile Include="PkgConstants.cs" />
+    <Compile Include="PkgConvertDSM.cs" />
+    <Compile Include="PkgFileSignerDefault.cs" />
+    <Compile Include="PkgManifest.cs" />
+    <Compile Include="PkgMerger.cs" />
+    <Compile Include="PKRBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReleaseType.cs" />
+    <Compile Include="StringToEnum.cs" />
+    <Compile Include="VersionInfo.cs" />
+    <Compile Include="WPCabPackage.cs" />
+    <Compile Include="WPCanonicalPackage.cs" />
+    <Compile Include="WPExtractedPackage.cs" />
+    <Compile Include="WPInstalledPackage.cs" />
+    <Compile Include="WPPackageBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToolsCommon\ToolsCommon.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf68}</Project>
+      <Name>ToolsCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

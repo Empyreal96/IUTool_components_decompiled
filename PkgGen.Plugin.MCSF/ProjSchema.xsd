@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified"
+           targetNamespace="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+             >
+
+  <xs:simpleType name="valueRegType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="REG_DWORD|REG_SZ|REG_MULTI_SZ|REG_BINARY"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="valueCSPType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="CFG_DATATYPE_INTEGER|CFG_DATATYPE_STRING|CFG_DATATYPE_MULTIPLE_STRING|CFG_DATATYPE_BOOLEAN|CFG_DATATYPE_BINARY|CFG_DATATYPE_UNKNOWN"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- SettingsGroup -->
+  <xs:element name="SettingsGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Constraints" type="constraintsType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="Asset" type="assetType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="Setting" type="settingType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Path" type="xs:string" use="required"/>
+      <xs:attribute name="CriticalSettings" type="YesNoType" use="optional"/>
+    </xs:complexType>
+    <xs:keyref name="assetKeyRef" refer="assetKey">
+      <xs:selector xpath="Setting"/>
+      <xs:field xpath="@Asset"/>
+    </xs:keyref>
+    <xs:key name="assetKey">
+      <xs:selector xpath="Asset"/>
+      <xs:field xpath="@Name"/>
+    </xs:key>
+  </xs:element>
+  <!-- end of SettingsGroup -->
+
+  <!-- constraintsType -->
+  <xs:complexType name="constraintsType">
+    <xs:attribute name="Atomic" type="YesNoType" use="optional"/>
+    <xs:attribute name="ImageTimeOnly" type="YesNoType" use="optional"/>
+    <xs:attribute name="FirstVariationOnly" type="YesNoType" use="optional"/>
+  </xs:complexType>
+  <!-- end of constraintsType -->
+
+  <!-- settingType -->
+  <xs:complexType name="settingType">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:choice>
+        <xs:element name="RegistrySource" type="regSourceType" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="CspSource" type="cspSourceType" minOccurs="1" maxOccurs="1"/>
+      </xs:choice>
+      <xs:element name="AccessType" type="accessType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Validate" type="validateType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Asset" type="xs:string" use="optional"/>
+    <xs:attribute name="Description" type="xs:string" use="required"/>
+    <xs:attribute name="FieldName" type="xs:string" use="optional" />
+    <xs:attribute name="SampleValue" type="xs:string" use="optional" />
+  </xs:complexType>
+  <!-- end of settingType -->
+
+  <!-- RegistrySource -->
+  <xs:complexType name="regSourceType">
+    <xs:attribute name="Type" type="valueRegType" use="required"/>
+    <xs:attribute name="Path" type="RegValuePathType" use="required"/>
+    <xs:attribute name="Default" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <!-- end of RegistrySource -->
+
+  <!-- CSPSource -->
+  <xs:complexType name="cspSourceType">
+    <xs:attribute name="Type" type="valueCSPType" use="required"/>
+    <xs:attribute name="Path" type="xs:string" use="required"/>
+  </xs:complexType>
+  <!-- end of CSPSource -->
+
+  <!-- assetType -->
+  <xs:complexType name="assetType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="ValueList" type="valueListType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="MultiStringList" type="multiStringListType" minOccurs="0" maxOccurs="1"/>
+      </xs:choice>
+      <xs:element name="Preset" type="presetType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Description" type="xs:string" use="required"/>
+    <xs:attribute name="Type" type="xs:string" use="required"/>
+    <xs:attribute name="Path" type="xs:string" use="required"/>
+    <xs:attribute name="TargetPackage" type="targetPackageType" use="optional"/>
+  </xs:complexType>
+  <!-- end of assetType -->
+
+  <!-- valueListType -->
+  <xs:complexType name="valueListType">
+    <xs:attribute name="OEMKey" type="xs:string" use="required"/>
+    <xs:attribute name="MOKey" type="xs:string" use="optional"/>
+    <xs:attribute name="FileNamesOnly" type="YesNoType" use="optional"/>
+  </xs:complexType>
+  <!-- end of valueListType -->
+
+  <!-- multiStringListType -->
+  <xs:complexType name="multiStringListType">
+    <xs:attribute name="Key" type="xs:string" use="required"/>
+    <xs:attribute name="Value" type="xs:string" use="required"/>
+  </xs:complexType>
+  <!-- end of multiStringListType -->
+
+  <!-- presetType -->
+  <xs:complexType name="presetType">
+    <xs:attribute name="DisplayName" type="xs:string" use="required"/>
+    <xs:attribute name="TargetFileName" type="xs:string" use="required"/>
+    <xs:attribute name="AlternatePath" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <!-- end of presetType -->
+
+  <!-- targetPackageType -->
+  <xs:simpleType name="targetPackageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default"/>
+      <xs:enumeration value="StaticApps"/>
+      <xs:enumeration value="VariantApps"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- end of targetPackageType -->
+
+  <!-- accessType -->
+  <xs:complexType name="accessType">
+    <xs:attribute name="Create" type="YesNoType" use="optional"/>
+    <xs:attribute name="Delete" type="YesNoType" use="optional"/>
+    <xs:attribute name="Get" type="YesNoType" use="optional"/>
+    <xs:attribute name="Replace" type="YesNoType" use="optional"/>
+  </xs:complexType>
+  <!-- end of accessType -->
+
+  <!-- validateType -->
+  <xs:complexType name="validateType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+      <xs:element name="Option" type="optionType"/>
+    </xs:sequence>
+    <xs:attribute name="Min" type="xs:int" use="optional"/>
+    <xs:attribute name="Max" type="xs:int" use="optional"/>
+    <xs:attribute name="MinLength" type="xs:int" use="optional"/>
+    <xs:attribute name="MaxLength" type="xs:int" use="optional"/>
+  </xs:complexType>
+  <!-- end of validateType -->
+
+  <!-- optionType -->
+  <xs:complexType name="optionType">
+    <xs:attribute name="Value" type="xs:string" use="required"/>
+    <xs:attribute name="FriendlyName" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <!-- end of optionType -->
+</xs:schema>
+

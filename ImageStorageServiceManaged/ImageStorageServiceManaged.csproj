@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft.WindowsPhone.Imaging</RootNamespace>
+    <AssemblyName>ImageStorageServiceManaged</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationTypeValue.cs" />
+    <Compile Include="BaseIdentifier.cs" />
+    <Compile Include="BcdConverter.cs" />
+    <Compile Include="BcdElement.cs" />
+    <Compile Include="BcdElementBoolean.cs" />
+    <Compile Include="BcdElementBootDevice.cs" />
+    <Compile Include="BcdElementDataType.cs" />
+    <Compile Include="BcdElementDataTypeInput.cs" />
+    <Compile Include="BcdElementDataTypes.cs" />
+    <Compile Include="BcdElementDevice.cs" />
+    <Compile Include="BcdElementDeviceGptInput.cs" />
+    <Compile Include="BcdElementDeviceInput.cs" />
+    <Compile Include="BcdElementDeviceMbrInput.cs" />
+    <Compile Include="BcdElementDeviceRamdiskInput.cs" />
+    <Compile Include="BcdElementInput.cs" />
+    <Compile Include="BcdElementInteger.cs" />
+    <Compile Include="BcdElementIntegerList.cs" />
+    <Compile Include="BcdElementIntegerListInput.cs" />
+    <Compile Include="BcdElementObject.cs" />
+    <Compile Include="BcdElementObjectList.cs" />
+    <Compile Include="BcdElementObjectListInput.cs" />
+    <Compile Include="BcdElementRawDataTypeInput.cs" />
+    <Compile Include="BcdElementsInput.cs" />
+    <Compile Include="BcdElementString.cs" />
+    <Compile Include="BcdElementValueTypeInput.cs" />
+    <Compile Include="BcdInput.cs" />
+    <Compile Include="BcdObject.cs" />
+    <Compile Include="BcdObjectInput.cs" />
+    <Compile Include="BcdObjects.cs" />
+    <Compile Include="BcdObjectsInput.cs" />
+    <Compile Include="BcdRegData.cs" />
+    <Compile Include="BcdRegValue.cs" />
+    <Compile Include="BCDXsdValidator.cs" />
+    <Compile Include="BCDXsdValidatorException.cs" />
+    <Compile Include="BlockAllocationTable.cs" />
+    <Compile Include="BlockIoIdentifierFactory.cs" />
+    <Compile Include="BlockIoType.cs" />
+    <Compile Include="BootConfigurationDatabase.cs" />
+    <Compile Include="BootIdentifier.cs" />
+    <Compile Include="CdRomIdentifier.cs" />
+    <Compile Include="CRC32.cs" />
+    <Compile Include="DataBlockEntry.cs" />
+    <Compile Include="DataBlockSource.cs" />
+    <Compile Include="DataBlockStream.cs" />
+    <Compile Include="DataTypeChoice.cs" />
+    <Compile Include="DeviceTypeChoice.cs" />
+    <Compile Include="DiskLocation.cs" />
+    <Compile Include="DiskStream.cs" />
+    <Compile Include="DiskStreamSource.cs" />
+    <Compile Include="DynamicHardDisk.cs" />
+    <Compile Include="ElementClass.cs" />
+    <Compile Include="ElementDeviceType.cs" />
+    <Compile Include="ElementFormat.cs" />
+    <Compile Include="FileIdentifier.cs" />
+    <Compile Include="FileSystemSourceAllocation.cs" />
+    <Compile Include="FullFlashUpdateType.cs" />
+    <Compile Include="GptDataEntryGenerator.cs" />
+    <Compile Include="GptPartitionInput.cs" />
+    <Compile Include="GptPartitionTypeChoice.cs" />
+    <Compile Include="GuidPartitionTable.cs" />
+    <Compile Include="GuidPartitionTableEntry.cs" />
+    <Compile Include="GuidPartitionTableHeader.cs" />
+    <Compile Include="HardDiskIdentifier.cs" />
+    <Compile Include="IBlockIoIdentifier.cs" />
+    <Compile Include="IBlockStreamSource.cs" />
+    <Compile Include="IDeviceIdentifier.cs" />
+    <Compile Include="IEntryGenerator.cs" />
+    <Compile Include="ImageConstants.cs" />
+    <Compile Include="ImagePayloadSource.cs" />
+    <Compile Include="ImageStorage.cs" />
+    <Compile Include="ImageStorageException.cs" />
+    <Compile Include="ImageStorageManager.cs" />
+    <Compile Include="ImageStoreHeader.cs" />
+    <Compile Include="ImageStructures.cs" />
+    <Compile Include="IntPtrExtensions.cs" />
+    <Compile Include="ISourceAllocation.cs" />
+    <Compile Include="IVirtualHardDisk.cs" />
+    <Compile Include="LocateIdentifier.cs" />
+    <Compile Include="LogFunction.cs" />
+    <Compile Include="MasterBootRecord.cs" />
+    <Compile Include="MasterBootRecordMetadataPartition.cs" />
+    <Compile Include="MbrDataEntryGenerator.cs" />
+    <Compile Include="MbrPartitionEntry.cs" />
+    <Compile Include="MetadataPartitionEntry.cs" />
+    <Compile Include="MetadataPartitionHeader.cs" />
+    <Compile Include="NativeImaging.cs" />
+    <Compile Include="NativeServiceHandle.cs" />
+    <Compile Include="OfflineRegistryHandle.cs" />
+    <Compile Include="PartitionFormat.cs" />
+    <Compile Include="PartitionIdentifier.cs" />
+    <Compile Include="PartitionIdentifierEx.cs" />
+    <Compile Include="PayloadReader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RamDiskIdentifier.cs" />
+    <Compile Include="RemovableDiskIdentifier.cs" />
+    <Compile Include="SafeVolumeHandle.cs" />
+    <Compile Include="SerialPortIdentifier.cs" />
+    <Compile Include="StorePayload.cs" />
+    <Compile Include="StructVersionAttribute.cs" />
+    <Compile Include="UdpIdentifier.cs" />
+    <Compile Include="ValidationEntry.cs" />
+    <Compile Include="ValueTypeChoice.cs" />
+    <Compile Include="VhdCommon.cs" />
+    <Compile Include="VhdExtensions.cs" />
+    <Compile Include="VhdFooter.cs" />
+    <Compile Include="VhdHeader.cs" />
+    <Compile Include="VhdType.cs" />
+    <Compile Include="VirtualDiskIdentifier.cs" />
+    <Compile Include="VirtualDiskPayloadGenerator.cs" />
+    <Compile Include="VirtualDiskPayloadManager.cs" />
+    <Compile Include="VirtualDiskSourceAllocation.cs" />
+    <Compile Include="VirtualDiskStream.cs" />
+    <Compile Include="VirtualMemoryPtr.cs" />
+    <Compile Include="Win32ExportException.cs" />
+    <Compile Include="Win32Exports.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BcdLayout.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageCommon\ImageCommon.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf40}</Project>
+      <Name>ImageCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsCommon\ToolsCommon.csproj">
+      <Project>{37ba0760-0c2c-4d4f-993f-94be80cecf68}</Project>
+      <Name>ToolsCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

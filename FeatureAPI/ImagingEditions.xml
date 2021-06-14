@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImagingEditions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate">
+<!--
+  This file should only be modified by approval of FUN\Deployment team and by Edition owners.
+-->
+  <Editions>
+    
+    <Edition 
+        Name="Windows Phone" 
+        AlternateName="Windows Phone 8.0" 
+        ReleaseType="Production"
+        RequiresKeyboard="true"
+        InternalProductDir="Phone"
+        >
+        <CoreFeatureManifestPackages>
+        <Package 
+            RelativePath="Merged\$(cputype)\$(buildtype)"
+            PackageName="Microsoft.PhoneFM.spkg"
+            FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft"
+            FMDeviceName="MicrosoftPhoneFM.xml"
+            />
+        </CoreFeatureManifestPackages>
+        <OptionalFeatureManifestPackages>
+        <Package 
+            RelativePath="Merged\$(cputype)\$(buildtype)" 
+            PackageName="Microsoft.MSNonProductionPartnerShareFM.spkg" 
+            FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+            FMDeviceName="MSNonProductionPartnerShareFM.xml"
+            AKName="MSOptionalFeatures.xml"
+            />
+        </OptionalFeatureManifestPackages>
+        <SupportedCPUTypes>
+          <CPUType HostCpuType="ARM"/>
+          <CPUType WowGuestCpuTypes="ARM" HostCpuType="ARM64"/>
+          <CPUType HostCpuType="X86"/>
+          <CPUType WowGuestCpuTypes="X86" HostCpuType="AMD64"/>
+        </SupportedCPUTypes>
+        <UISettings
+        DisplayType="Always">
+        <Lookups>
+            <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+            <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+            <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+            <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+            <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+            <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+            <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+            <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+            />
+            <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+        </UISettings>
+    </Edition>
+  
+    <Edition 
+      Name="Phone Manufacturing OS" 
+      AlternateName="Manufacturing OS" 
+      AllowOEMCustomizations="false"
+      ReleaseType="Production"
+      InternalProductDir="Phone"
+      >
+      <CoreFeatureManifestPackages>
+        <Package 
+          RelativePath="Merged\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.MMOSFM.spkg" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="MMOSFM.XML" 
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="Hide">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+    
+    <Edition 
+      Name="Phone Factory OS" 
+      AllowOEMCustomizations="false"
+      ReleaseType="Production"
+      InternalProductDir="Phone"
+      >
+      <CoreFeatureManifestPackages>
+        <Package 
+          RelativePath="Merged\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.FACTORYOSFM.spkg" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="FACTORYOSFM.XML" 
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="Hide">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+
+    <Edition 
+      Name="OneCore OS" 
+      ReleaseType="Test"
+      InternalProductDir="OneCore"
+      >
+      <CoreFeatureManifestPackages>
+        <Package 
+          RelativePath="Merged\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.OneCoreFM.spkg" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="OneCoreFM.xml" 
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType WowGuestCpuTypes="ARM" HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType WowGuestCpuTypes="X86" HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+	
+    <Edition 
+      Name="Athens"
+      ReleaseType="Production"
+      MinimumUserStoreSize="536870912"
+      InternalProductDir="IotUAP"
+      >
+      <CoreFeatureManifestPackages>
+        <Package 
+          RelativePath="Merged\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.IoTUAPFM.spkg" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="IoTUAPFM.xml"
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType WowGuestCpuTypes="ARM" HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType WowGuestCpuTypes="X86" HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+
+    </Edition>		
+	
+    <Edition 
+      Name="Windows 10 IoT Core" 
+      AlternateName="IoT Core" 	  
+      ReleaseType="Production"
+      MinimumUserStoreSize="536870912"
+      InternalProductDir="IotUAP"
+      >
+      <CoreFeatureManifestPackages>
+        <Package 
+          RelativePath="Retail\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.IoTUAP.IoTUAPFM.cab" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="IoTUAPFM.xml" 
+          />
+      </CoreFeatureManifestPackages>
+      <OptionalFeatureManifestPackages>
+        <Package 
+          RelativePath="Retail\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.IoTUAP.IoTUAPNonProductionPartnerShareFM.cab" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="IoTUAPNonProductionPartnerShareFM.xml"
+          AKName="MSOptionalFeatures.xml"
+          />
+      </OptionalFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType WowGuestCpuTypes="ARM" HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType WowGuestCpuTypes="X86" HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+
+    </Edition>		
+  
+    <Edition
+      Name="Windows Holographic"
+      AlternateName="Analog OneCore"
+      ReleaseType="Production"
+      InternalProductDir="Analog"
+      >
+      <CoreFeatureManifestPackages>
+        <Package
+          RelativePath="Retail\$(cputype)\$(buildtype)"
+          PackageName="Microsoft.Analog.WindowsHolographicFM.cab"
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft"
+          FMDeviceName="WindowsHolographicFM.xml"
+          />
+      </CoreFeatureManifestPackages>
+      <OptionalFeatureManifestPackages>
+        <Package 
+          RelativePath="Retail\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.Analog.WhNonProductionPartnerShareFM.cab" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="WhNonProductionPartnerShareFM.xml"
+          />
+      </OptionalFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="X86"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+
+    <Edition 
+      Name="Windows Holographic Manufacturing OS"
+      AlternateName="Analog Manufacturing OS" 
+      AllowOEMCustomizations="false"
+      ReleaseType="Production"
+      InternalProductDir="Analog"      
+      >
+      <CoreFeatureManifestPackages>
+        <Package 
+          RelativePath="Retail\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.Analog.WindowsHolographicMMOSFM.cab" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="WindowsHolographicMMOSFM.xml"
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="X86"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="Hide">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+
+   <Edition
+      Name="OneCoreUAP"
+      ReleaseType="Production"
+      InternalProductDir="OneCore"      
+      >
+      <CoreFeatureManifestPackages>
+        <Package
+          RelativePath="Retail\$(cputype)\$(buildtype)"
+          PackageName="Microsoft.OneCore.OneCoreFM.cab"
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft"
+          FMDeviceName="OneCoreFM.xml"
+          />
+      </CoreFeatureManifestPackages>
+      <OptionalFeatureManifestPackages>
+        <Package 
+          RelativePath="Retail\$(cputype)\$(buildtype)" 
+          PackageName="Microsoft.OneCore.OneCoreNonProductionPartnerShareFM.cab" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="OneCoreNonProductionPartnerShareFM.xml"
+          />
+      </OptionalFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType WowGuestCpuTypes="ARM" HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType WowGuestCpuTypes="X86" HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+
+    <Edition 
+      Name="Andromeda OS" 
+      ReleaseType="Production"
+      InternalProductDir="AndromedaOS"
+      >
+      <CoreFeatureManifestPackages>
+        <Package 
+          RelativePath="Retail\$(cputype)\$(buildtype)"
+          PackageName="Microsoft.AndromedaOS.AndromedaOSFM.cab" 
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft" 
+          FMDeviceName="AndromedaOSFM.xml" 
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType WowGuestCpuTypes="ARM" HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType WowGuestCpuTypes="X86" HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+
+    <Edition
+      Name="Stamford"
+      ReleaseType="Production"
+      InternalProductDir="Stamford"
+      >
+      <CoreFeatureManifestPackages>
+        <Package
+          RelativePath="Merged\$(cputype)\$(buildtype)"
+          PackageName="Microsoft.StamfordFM.spkg"
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft"
+          FMDeviceName="StamfordFM.xml"
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="X86"/>
+        <CPUType HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+
+    <Edition 
+      Name="Factory OS"
+      ReleaseType="Production"
+      InternalProductDir="FactoryOS"
+      >
+      <CoreFeatureManifestPackages>
+        <Package
+          RelativePath="Retail\$(cputype)\$(buildtype)"
+          PackageName="Microsoft.FactoryOS.FactoryOSFM.cab"
+          FMDeviceDir="\Windows\ImageUpdate\FeatureManifest\Microsoft"
+          FMDeviceName="FactoryOSFM.xml" 
+          />
+      </CoreFeatureManifestPackages>
+      <SupportedCPUTypes>
+        <CPUType HostCpuType="ARM"/>
+        <CPUType WowGuestCpuTypes="ARM" HostCpuType="ARM64"/>
+        <CPUType HostCpuType="X86"/>
+        <CPUType WowGuestCpuTypes="X86" HostCpuType="AMD64"/>
+      </SupportedCPUTypes>
+      <UISettings
+        DisplayType="OnlyWhenInstalled">
+        <Lookups>
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot10"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot82"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot81"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="Registry"
+            Path="SOFTWARE\Microsoft\Windows Kits\Installed Roots"
+            Key="KitsRoot"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="BINARY_ROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="Prebuilt"
+            />
+          <Lookup
+            Method="EnvironmentVariable"
+            Key="OSCONTENTROOT"
+            MSPackageDirectoryName="MSPackages"
+            />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\10"
+            MSPackageDirectoryName="MSPackages"
+          />
+          <Lookup
+            Method="HardCodedPath"
+            Path="C:\Program Files (x86)\Windows Kits\8.2"
+            MSPackageDirectoryName="MSPackages"
+            />
+        </Lookups>
+      </UISettings>
+    </Edition>
+
+  </Editions>
+</ImagingEditions> 
+

@@ -1,0 +1,645 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<macros xmlns="urn:Microsoft.WindowsPhone/PackageSchema.v8.00">
+  <!-- global macros for file path under data partition on device -->
+  <macro
+      id="runtime.bootDrive"
+      value="$(runtime.bootDrive)"
+      />
+  <!-- SYSTEMDRIVE=C:-->
+  <macro
+      id="runtime.systemDrive"
+      value="$(runtime.systemDrive)"
+      />
+  <!-- SYSTEMROOT=C:\windows -->
+  <macro
+      id="runtime.systemRoot"
+      value="$(runtime.systemRoot)"
+      />
+  <macro
+      id="runtime.windows"
+      value="$(runtime.windows)"
+      />
+  <macro
+      id="runtime.system32"
+      value="$(runtime.system32)"
+      />
+  <macro
+      id="runtime.system"
+      value="$(runtime.system)"
+      />
+  <macro
+      id="runtime.drivers"
+      value="$(runtime.drivers)"
+      />
+  <macro
+      id="runtime.help"
+      value="$(runtime.help)"
+      />
+  <macro
+      id="runtime.inf"
+      value="$(runtime.inf)"
+      />
+  <macro
+      id="runtime.fonts"
+      value="$(runtime.fonts)"
+      />
+  <macro
+      id="runtime.wbem"
+      value="$(runtime.wbem)"
+      />
+  <macro
+      id="runtime.appPatch"
+      value="$(runtime.appPatch)"
+      />
+  <macro
+      id="runtime.sysWow64"
+      value="$(runtime.sysWow64)"
+      />
+  <macro
+      id="runtime.mui"
+      value="$(runtime.mui)"
+      />
+  <macro
+      id="runtime.commonFiles"
+      value="$(runtime.commonFiles)"
+      />
+  <macro
+      id="runtime.commonFilesX86"
+      value="$(runtime.commonFilesX86)"
+      />
+  <macro
+      id="runtime.programFiles"
+      value="$(runtime.programFiles)"
+      />
+  <macro
+      id="runtime.programFilesX86"
+      value="$(runtime.programFilesX86)"
+      />
+  <macro
+      id="runtime.programData"
+      value="$(runtime.programData)"
+      />
+  <macro
+      id="runtime.userProfile"
+      value="$(runtime.userProfile)"
+      />
+  <macro
+      id="runtime.startMenu"
+      value="$(runtime.startMenu)"
+      />
+  <macro
+      id="runtime.documentSettings"
+      value="$(runtime.documentSettings)"
+      />
+  <macro
+      id="runtime.sharedData"
+      value="$(runtime.bootDrive)\Data"
+      />
+  <macro
+      id="runtime.apps"
+      value="$(runtime.bootDrive)\Programs"
+      />
+  <macro
+      id="runtime.clipAppLicenseInstall"
+      value="$(runtime.programData)\Microsoft\Windows\ClipSVC\Install\Apps"
+      />
+  <macro
+      id="build.cultureNameString"
+      value="$(build.cultureNameString)"
+      />
+  <macro
+      id="build.cultureManagedNameString"
+      value="$(build.cultureManagedNameString)"
+      />
+  <macro
+      id="build.cultureNeutralNameString"
+      value="$(build.cultureNeutralNameString)"
+      />
+  <macro
+      id="build.nttree"
+      value="$(build.nttree)"
+      />
+  <macro
+      id="build.nttree.wmf_win8"
+      value="$(build.nttree.wmf_win8)"
+      />
+  <macro
+      id="build.locsrc"
+      value="$(build.locsrc)"
+      />
+  <macro
+      id="build.wowBinTree"
+      value="$(build.wowBinTree)"
+      />
+  <macro
+      id="hklm.system"
+      value="HKEY_LOCAL_MACHINE\SYSTEM"
+      />
+  <macro
+      id="hklm.software"
+      value="HKEY_LOCAL_MACHINE\Software"
+      />
+  <macro
+      id="hklm.hardware"
+      value="HKEY_LOCAL_MACHINE\Hardware"
+      />
+  <macro
+      id="hklm.sam"
+      value="HKEY_LOCAL_MACHINE\SAM"
+      />
+  <macro
+      id="hklm.security"
+      value="HKEY_LOCAL_MACHINE\Security"
+      />
+  <macro
+      id="hklm.bcd"
+      value="HKEY_LOCAL_MACHINE\BCD"
+      />
+  <macro
+      id="hklm.drivers"
+      value="HKEY_LOCAL_MACHINE\Drivers"
+      />
+  <macro
+      id="hkuser.default"
+      value="HKEY_Users\.Default"
+      />
+  <macro
+      id="hkcu.root"
+      value="HKEY_CURRENT_USER"
+      />
+  <macro
+      id="hkcr.root"
+      value="$(hklm.software)\Classes"
+      />
+  <macro
+      id="hklm.svchost"
+      value="$(hklm.software)\Microsoft\Windows NT\CurrentVersion\SvcHost"
+      />
+  <macro
+      id="hklm.policies"
+      value="$(hklm.software)\Policies"
+      />
+  <macro
+      id="hklm.microsoft"
+      value="$(hklm.software)\Microsoft"
+      />
+  <macro
+      id="hklm.windows"
+      value="$(hklm.microsoft)\Windows"
+      />
+  <macro
+      id="hklm.windowsnt"
+      value="$(hklm.microsoft)\Windows NT\CurrentVersion"
+      />
+  <macro
+      id="hklm.currentcontrolset"
+      value="$(hklm.system)\CurrentControlSet"
+      />
+  <macro
+      id="hklm.services"
+      value="$(hklm.currentcontrolset)\services"
+      />
+  <macro
+      id="hklm.control"
+      value="$(hklm.currentcontrolset)\Control"
+      />
+  <macro
+      id="hklm.autologger"
+      value="$(hklm.control)\WMI\Autologger"
+      />
+  <macro
+      id="hklm.enum"
+      value="$(hklm.currentcontrolset)\Enum"
+      />
+  <macro
+      id="hkcr.classes"
+      value="$(hklm.software)\Classes"
+      />
+  <!-- Generic access rights -->
+  <macro
+      id="EMPTY_ACCESS"
+      value=""
+      />
+  <!-- 0x111FFFFF = STANDARD_RIGHTS_ALL | SPECIFIC_RIGHTS_ALL | ACCESS_SYSTEM_SECURITY | GENERIC_ALL -->
+  <macro
+      id="ALL_ACCESS"
+      value="0x111FFFFF"
+      />
+  <macro
+      id="GENERIC_ALL"
+      value="GA"
+      />
+  <macro
+      id="GENERIC_READ"
+      value="GR"
+      />
+  <macro
+      id="GENERIC_EXECUTE"
+      value="GX"
+      />
+  <macro
+      id="GENERIC_WRITE"
+      value="GW"
+      />
+  <!-- For following object, generic access rights should be used. 
+        Generic Mapping table
+        
+        1) Event
+        GENERIC_READ    = STANDARD_RIGHTS_READ | EVENT_QUERY_STATE        
+        GENERIC_WRITE   = STANDARD_RIGHTS_WRITE | EVENT_MODIFY_STATE
+        GENERIC_EXECUTE = STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE
+        GENERIC_ALL     = EVENT_ALL_ACCESS
+        
+        2) ETW
+        Generic permissions can't be used for ETW, please check
+        the specific ETW access right macros below.
+        
+        3) Mutex
+        GENERIC_READ    = STANDARD_RIGHTS_READ | MUTANT_QUERY_STATE        
+        GENERIC_WRITE   = STANDARD_RIGHTS_WRITE
+        GENERIC_EXECUTE = STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE
+        GENERIC_ALL     = MUTANT_ALL_ACCESS
+        
+        4) Event
+        GENERIC_READ    = STANDARD_RIGHTS_READ | EVENT_QUERY_STATE        
+        GENERIC_WRITE   = STANDARD_RIGHTS_WRITE | EVENT_MODIFY_STATE
+        GENERIC_EXECUTE = STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE
+        GENERIC_ALL     = EVENT_ALL_ACCESS
+        
+        5) Timer
+        GENERIC_READ    = STANDARD_RIGHTS_READ | TIMER_QUERY_STATE        
+        GENERIC_WRITE   = STANDARD_RIGHTS_WRITE | TIMER_MODIFY_STATE
+        GENERIC_EXECUTE = STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE
+        GENERIC_ALL     = TIMER_ALL_ACCESS
+
+        6) Semphore
+        GENERIC_READ    = STANDARD_RIGHTS_READ | SEMAPHORE_QUERY_STATE        
+        GENERIC_WRITE   = STANDARD_RIGHTS_WRITE | SEMAPHORE_MODIFY_STATE
+        GENERIC_EXECUTE = STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE
+        GENERIC_ALL     = SEMAPHORE_ALL_ACCESS
+
+        7) WNF (Windows Notification Framework)
+        GENERIC_READ    = SYNCHRONIZE | READ_CONTROL | WNF_STATE_SUBSCRIBE        
+        GENERIC_WRITE   = WNF_STATE_PUBLISH
+        GENERIC_EXECUTE = STANDARD_RIGHTS_ALL
+        GENERIC_ALL     = STANDARD_RIGHTS_ALL | WNF_STATE_SUBSCRIBE | WNF_STATE_PUBLISH
+
+        8) Alpc Port
+        GENERIC_READ    = READ_CONTROL | PORT_CONNECT        
+        GENERIC_WRITE   = DELETE | PORT_CONNECt
+        GENERIC_EXECUTE = 0
+        GENERIC_ALL     = PORT_ALL_ACCESS
+
+        9) Job
+        GENERIC_READ    = STANDARD_RIGHTS_READ | JOB_OBJECT_QUERY       
+        GENERIC_WRITE   = STANDARD_RIGHTS_WRITE | JOB_OBJECT_ASSIGN_PROCESS | JOB_OBJECT_SET_ATTRIBUTES | JOB_OBJECT_TERMINATE
+        GENERIC_EXECUTE = STANDARD_RIGHTS_EXECUTE | SYNCHRONIZE
+        GENERIC_ALL     = JOB_OBJECT_ALL_ACCESS
+
+        10) NamedPipe
+        
+        11) RPC
+    -->
+  <!-- Standard access rights -->
+  <macro
+      id="STANDARD_DELETE"
+      value="SD"
+      />
+  <macro
+      id="STANDARD_RIGHTS_READ"
+      value="RC"
+      />
+  <macro
+      id="STANDARD_RIGHTS_WRITE"
+      value="RC"
+      />
+  <macro
+      id="STANDARD_RIGHTS_EXECUTE"
+      value="RC"
+      />
+  <macro
+      id="STANDARD_READ_CONTROL"
+      value="RC"
+      />
+  <macro
+      id="STANDARD_WRITE_DAC"
+      value="WD"
+      />
+  <macro
+      id="STANDARD_WRITE_OWNER"
+      value="WO"
+      />
+  <!--
+        File and Directory access rights
+        http://msdn.microsoft.com/en-us/library/aa822867(VS.85).aspx
+        #define FILE_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | 0x1FF)  
+          
+        #define FILE_GENERIC_READ         (STANDARD_RIGHTS_READ     |\  
+                                           FILE_READ_DATA           |\  
+                                           FILE_READ_ATTRIBUTES     |\  
+                                           FILE_READ_EA             |\  
+                                           SYNCHRONIZE)  
+          
+          
+        #define FILE_GENERIC_WRITE        (STANDARD_RIGHTS_WRITE    |\  
+                                           FILE_WRITE_DATA          |\  
+                                           FILE_WRITE_ATTRIBUTES    |\  
+                                           FILE_WRITE_EA            |\  
+                                           FILE_APPEND_DATA         |\  
+                                           SYNCHRONIZE)  
+          
+          
+        #define FILE_GENERIC_EXECUTE      (STANDARD_RIGHTS_EXECUTE  |\  
+                                           FILE_READ_ATTRIBUTES     |\  
+                                           FILE_EXECUTE             |\  
+                                           SYNCHRONIZE)  
+    -->
+  <macro
+      id="FILE_ALL_ACCESS"
+      value="FA"
+      />
+  <macro
+      id="FILE_GENERIC_READ"
+      value="FR"
+      />
+  <macro
+      id="FILE_GENERIC_WRITE"
+      value="FW"
+      />
+  <macro
+      id="FILE_GENERIC_EXECUTE"
+      value="FX"
+      />
+  <macro
+      id="FILE_LIST_DIRECTORY"
+      value="CC"
+      />
+  <macro
+      id="FILE_DELETE_CHILD"
+      value="DT"
+      />
+  <!-- Registry access rights
+        http://msdn.microsoft.com/en-us/library/ms724878%28v=VS.85%29.aspx
+        #define KEY_READ                ((STANDARD_RIGHTS_READ       |\  
+                                          KEY_QUERY_VALUE            |\  
+                                          KEY_ENUMERATE_SUB_KEYS     |\  
+                                          KEY_NOTIFY)                 \  
+                                          &                           \  
+                                         (~SYNCHRONIZE))  
+          
+          
+        #define KEY_WRITE               ((STANDARD_RIGHTS_WRITE      |\  
+                                          KEY_SET_VALUE              |\  
+                                          KEY_CREATE_SUB_KEY)         \  
+                                          &                           \  
+                                         (~SYNCHRONIZE))  
+          
+        #define KEY_EXECUTE             ((KEY_READ)                   \  
+                                          &                           \  
+                                         (~SYNCHRONIZE))  
+          
+        #define KEY_ALL_ACCESS          ((STANDARD_RIGHTS_ALL        |\  
+                                          KEY_QUERY_VALUE            |\  
+                                          KEY_SET_VALUE              |\  
+                                          KEY_CREATE_SUB_KEY         |\  
+                                          KEY_ENUMERATE_SUB_KEYS     |\  
+                                          KEY_NOTIFY                 |\  
+                                          KEY_CREATE_LINK)            \  
+                                          &                           \  
+                                         (~SYNCHRONIZE))  
+    ;-->
+  <macro
+      id="KEY_ALL_ACCESS"
+      value="KA"
+      />
+  <macro
+      id="KEY_READ"
+      value="KR"
+      />
+  <macro
+      id="KEY_WRITE"
+      value="KW"
+      />
+  <macro
+      id="KEY_EXECUTE"
+      value="KX"
+      />
+  <!-- Service access rights
+        http://msdn.microsoft.com/en-us/library/ms685981(VS.85).aspx
+        SERVICE_CHANGE_CONFIG should not be used since it opens an EoP
+        attack.
+    -->
+  <macro
+      id="SERVICE_ALL_ACCESS"
+      value="CCLCSWRPWPDTLOCR"
+      />
+  <macro
+      id="SERVICE_QUERY_CONFIG"
+      value="CC"
+      />
+  <macro
+      id="SERVICE_QUERY_STATUS"
+      value="LC"
+      />
+  <macro
+      id="SERVICE_ENUMERATE_DEPENDENTS"
+      value="SW"
+      />
+  <macro
+      id="SERVICE_START"
+      value="RP"
+      />
+  <macro
+      id="SERVICE_STOP"
+      value="WP"
+      />
+  <macro
+      id="SERVICE_PAUSE_CONTINUE"
+      value="DT"
+      />
+  <macro
+      id="SERVICE_INTERROGATE"
+      value="LO"
+      />
+  <macro
+      id="SERVICE_USER_DEFINED_CONTROL"
+      value="CR"
+      />
+  <macro
+      id="SERVICE_CONFIG_CHANGE_STARTUP"
+      value="0x00000001"
+      />
+  <!-- COM access rights
+        http://msdn.microsoft.com/en-us/library/ms693364(VS.85).aspx
+        COM_LOCAL_ACCESS = COM_RIGHTS_EXECUTE | COM_RIGHTS_EXECUTE_LOCAL 
+        COM_LOCAL_LAUNCH = COM_RIGHTS_EXECUTE | COM_RIGHTS_EXECUTE_LOCAL | COM_RIGHTS_ACTIVATE_LOCAL
+    -->
+  <macro
+      id="COM_LOCAL_ACCESS"
+      value="CCDC"
+      />
+  <macro
+      id="COM_LOCAL_LAUNCH"
+      value="CCDCSW"
+      />
+  <!-- Device object access rights -->
+  <macro
+      id="DEVICE_ALL"
+      value="GA"
+      />
+  <macro
+      id="DEVICE_READ"
+      value="GR"
+      />
+  <macro
+      id="DEVICE_EXECUTE"
+      value="GX"
+      />
+  <macro
+      id="DEVICE_WRITE"
+      value="GW"
+      />
+  <!-- File Mapping access rights
+        http://msdn.microsoft.com/en-us/library/aa366559(v=VS.85).aspx
+    -->
+  <macro
+      id="FILE_MAP_QUERY"
+      value="CC"
+      />
+  <macro
+      id="FILE_MAP_WRITE"
+      value="DC"
+      />
+  <macro
+      id="FILE_MAP_READ"
+      value="LC"
+      />
+  <macro
+      id="FILE_MAP_EXECUTE"
+      value="WP"
+      />
+  <!-- FILE_MAP_ALL_ACCESS Includes all access rights to a file mapping object except FILE_MAP_EXECUTE -->
+  <macro
+      id="FILE_MAP_ALL_ACCESS"
+      value="CCDCLCSWSDRCWDWO"
+      />
+  <!-- ETW Access Permission
+        http://msdn.microsoft.com/en-us/library/windows/desktop/aa363717(v=vs.85).aspx
+
+        A GUID security descriptor contains the following specific rights:
+            WMIGUID_QUERY                 0x0001                CC
+            WMIGUID_SET                   0x0002                DC
+            WMIGUID_NOTIFICATION          0x0004                LC
+            WMIGUID_READ_DESCRIPTION      0x0008                SW
+            WMIGUID_EXECUTE               0x0010                RP
+            TRACELOG_CREATE_REALTIME      0x0020                WP
+            TRACELOG_CREATE_ONDISK        0x0040                DT
+            TRACELOG_GUID_ENABLE          0x0080                LO
+            TRACELOG_ACCESS_KERNEL_LOGGER 0x0100 // unused
+            TRACELOG_LOG_EVENT            0x0200
+            TRACELOG_ACCESS_REALTIME      0x0400
+            TRACELOG_REGISTER_GUIDS       0x0800
+
+        ETW_QUERY_SESSION = STANDARD_RIGHTS_READ | WMIGUID_QUERY | WMIGUID_READ_DESCRIPTION | WMIGUID_NOTIFICATION
+        
+        ETW_CONTROL_SESSION = STANDARD_RIGHTS_WRITE | WMIGUID_SET | TRACELOG_CREATE_REALTIME | TRACELOG_CREATE_ONDISK | TRACELOG_GUID_ENABLE
+
+        ETW_LOG_EVENT = STANDARD_RIGHTS_EXECUTE | WMIGUID_EXECUTE | TRACELOG_LOG_EVENT | TRACELOG_REGISTER_GUIDS
+
+        ETWLOG_ALL = STANDARD_RIGHTS_READ | STANDARD_RIGHTS_WRITE | STANDARD_RIGHTS_EXECUTE | WMIGUID_QUERY | WMIGUID_READ_DESCRIPTION | WMIGUID_NOTIFICATION | WMIGUID_SET | TRACELOG_CREATE_REALTIME | TRACELOG_CREATE_ONDISK | TRACELOG_LOG_EVENT | WMIGUID_EXECUTE | TRACELOG_GUID_ENABLE | TRACELOG_ACCESS_REALTIME | TRACELOG_REGISTER_GUIDS
+
+    -->
+  <!-- Support ControlTrace() with EVENT_TRACE_CONTROL_QUERY, NtQuerySystemInformation() -->
+  <macro
+      id="ETW_QUERY_SESSION"
+      value="RCCCSWLC"
+      />
+  <!-- Support StartTrace(), ControlTrace() with EVENT_TRACE_CONTROL_STOP, EVENT_TRACE_CONTROL_FLUSH and EVENT_TRACE_CONTROL_UPDATE -->
+  <macro
+      id="ETW_CONTROL_SESSION"
+      value="RCDCWPDTLO"
+      />
+  <!-- Log to sessions. Support NtTraceEvent()
+        A session becomes secure when it is started with EVENT_TRACE_SECURE_MODE in LogFileMode. TRACELOG_LOG_EVENT is access right for
+        logging into secure session.
+        Since we cannot do authenticate providers using old logging APIs (because they use session handle directly), 
+        legacy ETW/WPP providers cannot log to secure sessions.
+        Since the value is a hex code, it can't be used with other ETW access macro in Rights attribute in the same capability rule.
+    -->
+  <macro
+      id="ETW_LOG_EVENT"
+      value="0x020A10"
+      />
+  <!-- Full Access, 
+        Since the value is a hex code, it can't be used with other ETW access macro in Rights attribute in the same capability rule.
+    -->
+  <macro
+      id="ETW_ALL"
+      value="0x120FFF"
+      />
+  <!-- Transient object type macros -->
+  <macro
+      id="OBJECT_MUTEX"
+      value="Mutex"
+      />
+  <macro
+      id="OBJECT_EVENT"
+      value="Event"
+      />
+  <macro
+      id="OBJECT_SEMAPHORE"
+      value="Semaphore"
+      />
+  <macro
+      id="OBJECT_WAITABLETIMER"
+      value="WaitableTimer"
+      />
+  <macro
+      id="OBJECT_JOB"
+      value="JobObject"
+      />
+  <macro
+      id="OBJECT_FILEMAPPING"
+      value="FileMapping"
+      />
+  <macro
+      id="OBJECT_NAMEDPIPE"
+      value="NamedPipe"
+      />
+  <macro
+      id="OBJECT_MAILSLOT"
+      value="MailSlot"
+      />
+  <macro
+      id="OBJECT_ALPCPORT"
+      value="AlpcPort"
+      />
+  <macro
+      id="OBJECT_RPC"
+      value="Rpc"
+      />
+  <macro
+      id="OBJECT_WNF"
+      value="Wnf"
+      />
+  <macro
+      id="OBJECT_PRIVATE"
+      value="Private"
+      />
+  <macro
+      id="OBJECT_TEMPLATE"
+      value="Template"
+      />
+  <macro
+      id="OBJECT_SERVICE_CONFIG"
+      value="ServiceConfig"
+      />
+  <macro
+      id="language"
+      value="neutral"
+      />
+  <macro
+      id="resolution"
+      value=""
+      />
+</macros>

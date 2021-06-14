@@ -1,0 +1,1642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<xs:schema
+    targetNamespace="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+    xmlns="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+    xmlns:ps="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+  <xs:element name="Components">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <!-- Intentionally Blank: Component elements are inserted here at runtime -->
+      </xs:choice>
+    </xs:complexType>
+    <!-- Intentionally Blank: Unique entries are inserted here at runtime -->
+  </xs:element>
+
+  <xs:element name="CustomMetadata">
+    <xs:annotation>
+      <xs:documentation>Collection of custom metadata for the package.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Field" minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              A Field element defines a piece of custom metadata for the package.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="Name" type="xs:string" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Macros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Macro" minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              A Macro element defines a text substitution macro that can be used in other elements.
+              Macros are referenced using NMAKE syntax, i.e. $(runtime.windows).
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="Id" type="MacroIdType" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                  Required. The Id for this macro, used in macro references. For example, if the
+                  Id for this macro is "runtime.windows", the macro would be referenced as $(runtime.windows).
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Value" type="MacroValueStringType" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                  Required. The value that will be substituted for macro references in macro- enabled XML attributes.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="UniqueMacroId">
+      <xs:selector xpath="ps:Macro" />
+      <xs:field xpath="@Id" />
+    </xs:unique>
+  </xs:element>
+
+  <!-- security related types-->
+  <xs:element name="Capabilities">
+    <xs:annotation>
+      <xs:documentation>
+        A Capabilities element contains at least one Capability element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="Capability"  minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="WindowsRules"  minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="UniqueCapabilityId">
+      <xs:selector xpath="ps:Capability" />
+      <xs:field xpath="@Id" />
+    </xs:unique>
+    <xs:unique name="UniqueWindowsRulesId">
+      <xs:selector xpath="ps:WindowsRules" />
+      <xs:field xpath="@Id" />
+    </xs:unique>
+  </xs:element>
+
+  <xs:element name="Capability">
+    <xs:annotation>
+      <xs:documentation>
+        A Capability element defines a capability
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CapabilityRules" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="Id" type="CapabilityIdType" use="required" />
+      <xs:attribute name="FriendlyName" type="DescriptionStringType" use="required" />
+      <xs:attribute name="Visibility" type="VisibilityType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CapabilityRules">
+    <xs:annotation>
+      <xs:documentation>
+        A CapabilityRules element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="File" type="CapRuleFileType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="Directory" type="CapRuleDirectoryType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="RegKey" type="CapRuleRegKeyType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="ServiceAccess" type="CapRuleServiceAccessType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="TransientObject" type="CapRuleTransientObjectType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="COM" type="CapRuleCOMType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="WinRT" type="CapRuleWinRTType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="Privilege" type="CapRulePrivilegeType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="ETWProvider" type="CapRuleETWProviderType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="WNF" type="CapRuleWNFType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="WindowsCapability" type="CapRuleWindowsCapabilityType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="SDRegValue" type="CapRuleSDRegValueType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="CapRuleFileType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for File
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="DevicePathType" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleDirectoryType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for Directory
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="FolderPathType" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleRegKeyType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for RegKey
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="RegKeyPathType" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleServiceAccessType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for Service
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Name" type="LongServiceNameType" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleTransientObjectType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for TransientObject
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="TransientObjectPathType" use="required" />
+    <xs:attribute name="Type" type="TransientObjectTypeType" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRulePrivilegeType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for Privilege
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Id" type="PrivilegeRefType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleCOMType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for COM
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="AppId" type="GuidType" use="required" />
+    <xs:attribute name="LaunchPermission" type="MultiMacroIdsRefType" use="optional" />
+    <xs:attribute name="AccessPermission" type="MultiMacroIdsRefType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleWinRTType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for WinRT out-of-proc servers
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ServerName" type="xs:string" use="required" />
+    <xs:attribute name="LaunchPermission" type="MultiMacroIdsRefType" use="optional" />
+    <xs:attribute name="AccessPermission" type="MultiMacroIdsRefType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleETWProviderType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for ETW Provider
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Guid" type="GuidType2" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleWNFType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability rule for WNF
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Scope" type="WNFScopeType" use="required" />
+    <xs:attribute name="Tag" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+          <xs:maxLength value="4"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Sequence" type="xs:integer" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+    <xs:attribute name="DataPermanent" type="WNFDataPermanentType" use="optional" default="0"/>
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleWindowsCapabilityType">
+    <xs:annotation>
+      <xs:documentation>
+        A Windows Capability element
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Id" type="WindowsCapabilityIdMacroType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CapRuleSDRegValueType">
+    <xs:annotation>
+      <xs:documentation>
+        A SDRegValue Capability element
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="RegValuePathType" use="required" />
+    <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required" />
+    <xs:attribute name="SaveAsString" type="YesNoType" use="optional" />
+    <xs:attribute name="SetOwner" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:element name="RequiredCapabilities">
+    <xs:annotation>
+      <xs:documentation>
+        A RequiredCapabilities element contains at least one RequiredCapability element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="RequiredCapability" minOccurs="1" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="UniqueRequiredCapabilityId">
+      <xs:selector xpath="ps:RequiredCapability" />
+      <xs:field xpath="@CapId" />
+    </xs:unique>
+  </xs:element>
+
+  <xs:element name="RequiredCapability">
+    <xs:annotation>
+      <xs:documentation>
+        A RequiredCapability defines a requested capabilit Id
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="CapId" type="CapabilityIdType" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PrivateResources">
+    <xs:annotation>
+      <xs:documentation>
+        A PrivateResources element contains one or more PrivateResource.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="File" type="ResFileType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="Directory" type="ResDirectoryType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="RegKey" type="ResRegKeyType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="TransientObject" type="ResTransientObjectType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="ServiceAccess" type="ResServiceAccessType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="COM" type="ResCOMType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="WinRT" type="ResWinRTType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="ETWProvider" type="ResETWProviderType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="WNF" type="ResWNFType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="SDRegValue" type="ResSDRegValueType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="ResFileType">
+    <xs:annotation>
+      <xs:documentation>
+        A private File resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="DevicePathType" use="required" />
+    <xs:attribute name="ReadOnly" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="ResDirectoryType">
+    <xs:annotation>
+      <xs:documentation>
+        A private Driectory resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="FolderPathType" use="required" />
+    <xs:attribute name="ReadOnly" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="ResRegKeyType">
+    <xs:annotation>
+      <xs:documentation>
+        A private RegKey resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="RegKeyPathType" use="required" />
+    <xs:attribute name="ReadOnly" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="ResTransientObjectType">
+    <xs:annotation>
+      <xs:documentation>
+        A private TransientObject resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="TransientObjectPathType" use="required" />
+    <xs:attribute name="Type" type="TransientObjectTypeType" use="required" />
+    <xs:attribute name="ReadOnly" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="ResServiceAccessType">
+    <xs:annotation>
+      <xs:documentation>
+        A private service resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Name" type="LongServiceNameType" use="required" />
+    <xs:attribute name="ReadOnly" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="ResETWProviderType">
+    <xs:annotation>
+      <xs:documentation>
+        A private ETW Provider resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Guid" type="GuidType2" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="ResCOMType">
+    <xs:annotation>
+      <xs:documentation>
+        A private COM resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="AppId" type="GuidType" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="ResWinRTType">
+    <xs:annotation>
+      <xs:documentation>
+        A private WinRT resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ServerName" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="ResWNFType">
+    <xs:annotation>
+      <xs:documentation>
+        A private WNF resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Scope" type="WNFScopeType" use="required" />
+    <xs:attribute name="Tag" type="xs:string" use="required" />
+    <xs:attribute name="Sequence" type="xs:integer" use="required" />
+    <xs:attribute name="DataPermanent" type="WNFDataPermanentType" use="optional" default="0"/>
+    <xs:attribute name="ReadOnly" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="ResSDRegValueType">
+    <xs:annotation>
+      <xs:documentation>
+        A SDRegValue resource
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="RegValuePathType" use="required" />
+    <xs:attribute name="SaveAsString" type="YesNoType" use="optional" />
+    <xs:attribute name="ReadOnly" type="YesNoType" use="optional" />
+    <xs:attribute name="SetOwner" type="YesNoType" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="driverSecurityType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="AccessedByCapability" />
+      <xs:element ref="AccessedByService"/>
+      <xs:element ref="AccessedByApplication"/>
+    </xs:choice>
+    <xs:attribute name="InfSectionName" type="xs:string" use="required"/>
+    <xs:attribute name="RuleTemplate" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:element name="AccessedByCapability">
+    <xs:complexType>
+      <xs:attribute name="Id" type="CapabilityIdType" use="required"/>
+      <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AccessedByService">
+    <xs:complexType>
+      <xs:attribute name="Name" type="LongServiceNameType" use="required"/>
+      <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AccessedByApplication">
+    <xs:complexType>
+      <xs:attribute name="Name" type="ApplicationNameType" use="required"/>
+      <xs:attribute name="Rights" type="MultiMacroIdsRefType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Authorization">
+    <xs:annotation>
+      <xs:documentation>
+        An Authorization element contains one or more PrincipalClass, CapabilityClass, ExecuteRule or CapabilityRule element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="PrincipalClass" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="CapabilityClass" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="ExecuteRule" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="CapabilityRule" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="UniquePrincipalClass">
+      <xs:selector xpath="ps:PrincipalClass" />
+      <xs:field xpath="@Name" />
+    </xs:unique>
+    <xs:unique name="UniqueCapabilityClass">
+      <xs:selector xpath="ps:CapabilityClass" />
+      <xs:field xpath="@Name" />
+    </xs:unique>
+    <xs:unique name="UniqueExecuteRule">
+      <xs:selector xpath="ps:ExecuteRule" />
+      <xs:field xpath="@Name" />
+    </xs:unique>
+    <xs:unique name="UniqueCapabilityRule">
+      <xs:selector xpath="ps:CapabilityRule" />
+      <xs:field xpath="@Name" />
+    </xs:unique>
+  </xs:element>
+
+  <xs:element name="PrincipalClass">
+    <xs:annotation>
+      <xs:documentation>
+        A PrincipalClass element contains at least one Executables, Certificates or Chambers element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="Executables" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="Directories" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="Certificates" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+      <xs:attribute name="Name" type="PrincipalClassNameType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Executables">
+    <xs:annotation>
+      <xs:documentation>
+        A Executables element contains at least one Executable element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="Executable" type="ClassExecutableType" minOccurs="1" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="ClassExecutableType">
+    <xs:annotation>
+      <xs:documentation>
+        A path of an executable
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="DevicePathType" use="required" />
+  </xs:complexType>
+
+  <xs:element name="Directories">
+    <xs:annotation>
+      <xs:documentation>
+        A Directories element contains at least one Directory element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="Directory" type="ClassDirectoryType" minOccurs="1" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="ClassDirectoryType">
+    <xs:annotation>
+      <xs:documentation>
+        A path to a file
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Path" type="FolderPathType" use="required" />
+  </xs:complexType>
+
+  <xs:element name="Certificates">
+    <xs:annotation>
+      <xs:documentation>
+        A Certificates element contains at least one Certificate element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="Certificate" type="ClassCertificateType" minOccurs="1" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="ClassCertificateType">
+    <xs:annotation>
+      <xs:documentation>
+        A path to a file
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Type" type="CertificateTypeType" use="required" />
+    <xs:attribute name="EKU" type="CertificateEkuType" use="optional" />
+    <xs:attribute name="Alg" type="CertificateHashType" use="optional" default="Sha256"/>
+    <xs:attribute name="Thumbprint" type="CertificateThumbprintType" use="optional" />
+  </xs:complexType>
+
+  <xs:element name="CapabilityClass">
+    <xs:annotation>
+      <xs:documentation>
+        A CapabilityClass element contains at least one MemberCapability or MemberCapabilityClass element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="MemberCapability" type="MemberCapabilityType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="MemberCapabilityClass" type="MemberCapabilityClassType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+      <xs:attribute name="Name" type="CapabilityClassNameType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="MemberCapabilityType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability that is a member of a capability class.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Id" type="CapabilityIdOrWindowsCapabilityIdMacroType" use="required" />
+  </xs:complexType>
+  
+  <xs:complexType name="MemberCapabilityClassType">
+    <xs:annotation>
+      <xs:documentation>
+        A capability class that is nested in another capability class.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Name" type="CapabilityClassNameType" use="required" />
+  </xs:complexType>
+
+  <xs:element name="ExecuteRule">
+    <xs:annotation>
+      <xs:documentation>
+        An authorization rule for execution.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="Name" type="ExecuteRuleNameType" use="required" />
+      <xs:attribute name="PrincipalClass" type="PrincipalClassNameType" use="required" />
+      <xs:attribute name="TargetChamber" type="ChamberNameType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CapabilityRule">
+    <xs:annotation>
+      <xs:documentation>
+        An authorization rule for capabilities.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="Name" type="CapabilityRuleNameType" use="required" />
+      <xs:attribute name="CapabilityClass" type="CapabilityClassNameType" use="required" />
+      <xs:attribute name="PrincipalClass" type="PrincipalClassNameType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="WindowsRules">
+    <xs:annotation>
+      <xs:documentation>
+        A WindowsRules element defines a set of rules for a single trustee SID
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="File" type="CapRuleFileType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="Directory" type="CapRuleDirectoryType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="RegKey" type="CapRuleRegKeyType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="ServiceAccess" type="CapRuleServiceAccessType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="TransientObject" type="CapRuleTransientObjectType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="COM" type="CapRuleCOMType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="ETWProvider" type="CapRuleETWProviderType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="WNF" type="CapRuleWNFType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="SDRegValue" type="CapRuleSDRegValueType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+      <xs:attribute name="Id" type="WindowsRulesIdType" use="required" />
+      <xs:attribute name="FriendlyName" type="DescriptionStringType" use="required" />
+      <xs:attribute name="SID" type="SIDType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- SimpleType -->
+  <xs:simpleType name="DescriptionStringType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+
+  <xs:simpleType name="MacroIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z_][a-zA-Z_0-9.]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MacroValueStringType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9\-_!@#%\^\.,;:=\+~`'\{\}\(\)\[\]\$ \\]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ApplicationNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The application name
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9\-_\{\}]+" />
+      <xs:minLength value="2"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ServiceNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The service name type for Windows Phone service and it is case sensitive
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9\-_]+" />
+      <xs:minLength value="3"/>
+      <xs:maxLength value="32"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LongServiceNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The service name type for any service and it is case sensitive
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9\-_]+" />
+      <xs:minLength value="3"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MultiMacroIdsRefType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(\$\([a-zA-Z_][a-zA-Z_0-9.]*\))+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="WindowsCapabilityIdMacroType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\([WINCAP_][A-Z_0-9.]*\)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PrivilegeRefType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\(SE_[A-Z][_A-Z0-9]*\)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="GuidType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="GuidType2">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DevicePathType">
+    <xs:annotation>
+      <xs:documentation>
+        It must start with a macro.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\([a-zA-Z_][a-zA-Z_0-9.]*\)(|\\[a-zA-Z0-9\-_!@#%\^\.,;=\+~`'\{\}\(\)\[\]\$ \\]+)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RegKeyNameType">
+    <xs:annotation>
+      <xs:documentation>
+        It must start with a macro.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\([a-zA-Z_][a-zA-Z_0-9.]*\)(|\\[\x20-\x7F]+)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FolderPathType">
+    <xs:annotation>
+      <xs:documentation>
+        It must start with a macro and end with \(*) or \(+). The wildcard (*) indicates that self, all children and grandchilren
+        will have/inherit the same permission. In SDDL, it will be translated to CIOI. The wildchar(+) indicates that all children and
+        grandchildren, but not self will inherit the same permission.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\([a-zA-Z_][a-zA-Z_0-9.]*\)(|\\[a-zA-Z0-9\-_!@#%\^\.,;=\+~`'\{\}\(\)\[\]\$ \\]+)\\\([\*\+]\)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ExecutablePathType">
+    <xs:annotation>
+      <xs:documentation>
+        It must start with a macro and followed by \\ and rest of the path and end with .exe
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\([a-zA-Z_][a-zA-Z_0-9.]*\)(|\\[a-zA-Z0-9-_!@#%\^.,;=\+~`'{}()\[\]\$ \\]+.(e|E)(x|X)(e|E))" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RegKeyPathType">
+    <xs:annotation>
+      <xs:documentation>
+        It must start with a macro and end with \(*). The wildcard (*) indicates that all children and grandchilren
+        will inherit the same permission. In SDDL, it will be translated to CI.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\([a-zA-Z_][a-zA-Z_0-9.]*\)(|\\[\x20-\x7F]+)\\\(\*\)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RegValuePathType">
+    <xs:annotation>
+      <xs:documentation>
+        It must start with a macro.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\([a-zA-Z_][a-zA-Z_0-9.]*\)(|\\[\x20-\x7F]+)" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TransientObjectTypeType">
+    <xs:annotation>
+      <xs:documentation>
+        It must be a TransientObject type macro
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\$\(OBJECT_[A-Z][_A-Z0-9]*\)" />
+      <xs:minLength value="3"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TransientObjectPathType">
+    <xs:annotation>
+      <xs:documentation>
+        It must be a path
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9\-_!@#%\^\.,;=\+~`'\{\}\(\)\[\]\$ \\]+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SvcHostGroupNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The svchost group name
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9\-_]+" />
+      <xs:minLength value="3"/>
+      <xs:maxLength value="16"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="IsTCBType">
+    <xs:annotation>
+      <xs:documentation>
+        Indicate if the service is running under local system or not
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="Yes">
+        <xs:annotation>
+          <xs:documentation>
+            The service is running under LocalSystem
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <xs:enumeration value="No">
+        <xs:annotation>
+          <xs:documentation>
+            The service is running under a user account specified by provisioning component
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OEMExtensibleType">
+    <xs:annotation>
+      <xs:documentation>
+        Indicate if the chamber is oem extensible
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Yes">
+        <xs:annotation>
+          <xs:documentation>
+            The chamber is oem extensible
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="No">
+        <xs:annotation>
+          <xs:documentation>
+            The chamber is not oem extensible
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="LogonAccountType">
+    <xs:annotation>
+      <xs:documentation>
+        Indicate the service is running a specific account
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="DefApps">
+        <xs:annotation>
+          <xs:documentation>
+            The service is running under DefApps
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="YesNoType">
+    <xs:annotation>
+      <xs:documentation>
+        Yes No type
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="Yes" />
+      <xs:enumeration value="No" />
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CapabilityIdType">
+    <xs:annotation>
+      <xs:documentation>
+        CapabilityId should start with ID_CAP_, with reasonable length that should be less than 50 characters.
+        The length limitation is due to backward compatibility to WP7
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="ID_CAP_[A-Z][_A-Z0-9]*" />
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CapabilityIdOrWindowsCapabilityIdMacroType">
+    <xs:annotation>
+      <xs:documentation>
+        CapabilityId should start with ID_CAP_ or be a macro for a Windows capability.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="ID_CAP_[A-Z][_A-Z0-9]*|\$\([WINCAP_][A-Z_0-9.]*\)" />
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="VisibilityType">
+    <xs:annotation>
+      <xs:documentation>
+        The visibility of a Capability.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="Public">
+        <xs:annotation>
+          <xs:documentation>
+            The capability is opened for every application and service including 3rd pary applications
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+      <xs:enumeration value="Internal">
+        <xs:annotation>
+          <xs:documentation>
+            The capability is only used by 1st party application and service
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="WNFScopeType">
+    <xs:annotation>
+      <xs:documentation>
+        The WNF scope string.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="System" />
+      <xs:enumeration value="Session" />
+      <xs:enumeration value="User" />
+      <xs:enumeration value="Process" />
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="WNFDataPermanentType">
+    <xs:annotation>
+      <xs:documentation>
+        The WNF Data Permanent. 1 - Permanent
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="1" />
+      <xs:enumeration value="0" />
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PrincipalClassNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The PrincipalClass name should start with PRINCIPAL_CLASS_, with a length less than 256 characters.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="PRINCIPAL_CLASS_[A-Z][_A-Z0-9]*" />
+      <xs:minLength value="1"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CapabilityClassNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The CapabilityClass name should start with CAPABILITY_CLASS_, with a length less than 256 characters.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="CAPABILITY_CLASS_[A-Z][_A-Z0-9]*" />
+      <xs:minLength value="1"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ExecuteRuleNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The ExecuteRule name should start with EXECUTE_RULE_, with a length less than 256 characters.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="EXECUTE_RULE_[A-Z][_A-Z0-9]*" />
+      <xs:minLength value="1"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CapabilityRuleNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The CapabilityRule name should start with CAPABILITY_RULE_, with a length less than 256 characters.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="CAPABILITY_RULE_[A-Z][_A-Z0-9]*" />
+      <xs:minLength value="1"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CertificateTypeType">
+    <xs:annotation>
+      <xs:documentation>
+        The type of the certificate.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+
+      <xs:enumeration value="Leaf" />
+      <xs:enumeration value="Intermediate">
+        <xs:annotation>
+          <xs:documentation>
+            The certificate is the intermediate certificate used to sign the leaf
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Root"/>
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CertificateEkuType">
+    <xs:annotation>
+      <xs:documentation>
+        The EKU of the certificate
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-9][0-9]*(.[1-9][0-9]*)+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CertificateHashType">
+    <xs:annotation>
+      <xs:documentation>
+        The hash algorithm used to generate the thumbprint for the certificate.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Sha256" />
+      <xs:enumeration value="Sha384" />
+      <xs:enumeration value="Sha512" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CertificateThumbprintType">
+    <xs:annotation>
+      <xs:documentation>
+        The thumbprint of the certificate
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-fA-F0-9]+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ChamberNameType">
+    <xs:annotation>
+      <xs:documentation>
+        The chamber name which can include macros.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9\-_\{\}\(\$\)]+" />
+      <xs:minLength value="2"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SIDType">
+    <xs:annotation>
+      <xs:documentation>
+        The SID type.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^S(\-[0-9]+)+" />
+      <xs:minLength value="5"/>
+      <xs:maxLength value="512"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="WindowsRulesIdType">
+    <xs:annotation>
+      <xs:documentation>
+        To avoid add WindowsRules into RequireCapabilities,
+        The Id of WindowsRules should not start with ID_CAP_, with reasonable length that should be less than 50 characters.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^(?!ID_CAP_)[a-zA-Z0-9\-_]+" />
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- end of security related types-->
+
+
+
+  <!-- file related types-->
+  <xs:simpleType name="attributesType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="((Archive|Hidden|ReadOnly|System|Normal)( (Archive|Hidden|ReadOnly|System|Normal))*)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="fileType">
+    <xs:attribute name="Name" type="xs:string" use="optional"/>
+    <xs:attribute name="Source" type="xs:string" use="required"/>
+    <xs:attribute name="DestinationDir" type="DevicePathType" use="optional"/>
+    <xs:attribute name="Attributes" type="attributesType" use="optional" />
+    <xs:attribute name="EmbeddedSigningCategory" type="xs:string" use="optional" />
+  </xs:complexType>
+
+  <!-- end of file related types -->
+
+  <!-- registry related types -->
+
+  <xs:complexType name="regValueType">
+    <xs:attribute name="Name" use="required">
+      <!-- no emtpy value name is allowed, for default one, use "@" -->
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Value" type="xs:string" use="required"/>
+    <xs:attribute name="Type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="REG_SZ"/>
+          <xs:enumeration value="REG_MULTI_SZ"/>
+          <xs:enumeration value="REG_DWORD"/>
+          <xs:enumeration value="REG_QWORD"/>
+          <xs:enumeration value="REG_BINARY"/>
+          <xs:enumeration value="REG_EXPAND_SZ"/>
+          <xs:enumeration value="REG_HEX"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="regKeyType">
+    <xs:sequence>
+      <xs:element name="RegValue" type="regValueType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="KeyName" type="RegKeyNameType" use="required"/>
+  </xs:complexType>
+  <!-- end of registry related types-->
+
+  <xs:complexType name="filterGroupType">
+    <xs:attribute name="Language" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\*|(!?\([a-zA-Z][a-zA-Z0-9_\-]+(;[a-zA-Z][a-zA-Z0-9_\-]+)*\))"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name="Resolution" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\*|(!?\([1-9][0-9]+(x|X)[1-9][0-9]+(;[1-9][0-9]+(x|X)[1-9][0-9]+)*\))"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name="CpuFilter" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="X86"/>
+          <xs:enumeration value="ARM"/>
+          <xs:enumeration value="ARM64"/>
+          <xs:enumeration value="AMD64"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="RegImport">
+    <xs:complexType>
+      <xs:attribute name="Source" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RegKeys">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="filterGroupType">
+          <xs:sequence>
+            <xs:element name="RegKey" type="regKeyType" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Files">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="filterGroupType">
+          <xs:sequence>
+            <xs:element name="File" type="fileType" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- OScomponent types-->
+  <xs:complexType name="osComponentType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element ref="Files"/>
+      <xs:element ref="RegKeys"/>
+      <xs:element ref="RegImport"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- end of OSComponent types-->
+
+
+  <!-- Application types -->
+  <xs:element name="Executable">
+    <xs:complexType>
+      <xs:attribute name="Path" type="ExecutablePathType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="applicationType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element ref="Executable"/>
+      <xs:element ref="Files"/>
+      <xs:element ref="RegKeys"/>
+      <xs:element ref="RegImport"/>
+      <xs:element ref="RequiredCapabilities"/>
+      <xs:element ref="PrivateResources"/>
+    </xs:choice>
+    <xs:attribute name="Name" type="ApplicationNameType" use="required"/>
+    <xs:attribute name="Suite" type="ApplicationNameType" use="optional"/>
+    <xs:attribute name="OEMExtensible" type="OEMExtensibleType" use="optional" default="No"/>
+  </xs:complexType>
+  <!-- end of Application types-->
+
+  <!-- AppResource types -->
+  <xs:complexType name="appResourceType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element ref="Executable"/>
+      <xs:element ref="Files"/>
+      <xs:element ref="RegKeys"/>
+      <xs:element ref="RegImport"/>
+    </xs:choice>
+    <xs:attribute name="Name" type="ApplicationNameType" use="required"/>
+    <xs:attribute name="Suite" type="ApplicationNameType" use="optional"/>
+  </xs:complexType>
+  <!-- end of AppResource types -->
+
+  <!-- Service related types -->
+  <xs:complexType name="failureActionType">
+    <xs:attribute name="Type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None"/>
+          <xs:enumeration value="RebootMachine"/>
+          <xs:enumeration value="RestartService"/>
+          <xs:enumeration value="RunCommand"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Delay" type="xs:nonNegativeInteger" use="required"/>
+  </xs:complexType>
+
+  <xs:element name="FailureActions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Action" type="failureActionType" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Command" type="xs:string" use="optional"/>
+      <xs:attribute name="RebootMessage" type="xs:string" use="optional"/>
+      <xs:attribute name="ResetPeriod" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="\d+|INFINITE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ServiceDll">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="fileType">
+          <xs:attribute name="ServiceManifest" type="xs:string" use="optional"/>
+          <xs:attribute name="ServiceMain" type="xs:string" use="optional"/>
+          <xs:attribute name="UnloadOnStop" type="xs:boolean" use="optional"/>
+          <xs:attribute name="HostExe" type="xs:string" use="optional"/>
+          <xs:attribute name="BinaryInOneCorePkg" type="xs:boolean" use="optional"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="serviceExe">
+    <xs:complexContent>
+      <xs:extension base="fileType">
+        <xs:attribute name="ImagePath" type="xs:string" use="optional"/>
+        <xs:attribute name="BinaryInOneCorePkg" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="serviceStartType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boot"/>
+      <xs:enumeration value="System"/>
+      <xs:enumeration value="Auto"/>
+      <xs:enumeration value="Demand"/>
+      <xs:enumeration value="Disabled"/>
+      <xs:enumeration value="DelayedAuto"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="serviceTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Win32OwnProcess"/>
+      <xs:enumeration value="Win32ShareProcess"/>
+      <xs:enumeration value="Win32UserShareProcess"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="errorControlType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ignore"/>
+      <xs:enumeration value="Normal"/>
+      <xs:enumeration value="Severe" />
+      <xs:enumeration value="Critical"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="serviceType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Executable" type="serviceExe"/>
+      <xs:element ref="ServiceDll" />
+      <xs:element ref="FailureActions"/>
+      <xs:element ref="Files"/>
+      <xs:element ref="RegKeys"/>
+      <xs:element ref="RegImport"/>
+      <xs:element ref="RequiredCapabilities"/>
+      <xs:element ref="PrivateResources"/>
+    </xs:choice>
+    <xs:attribute name="Name" type="ServiceNameType" use="required"/>
+    <xs:attribute name="IsTCB" type="IsTCBType" use="optional" />
+    <xs:attribute name="LogonAccount" type="LogonAccountType" use="optional" />
+    <xs:attribute name="DisplayName" type="xs:string" use="optional"/>
+    <xs:attribute name="Description" type="xs:string" use="optional"/>
+    <xs:attribute name="Group" type="xs:string" use="optional"/>
+    <xs:attribute name="SvcHostGroupName" type="SvcHostGroupNameType" use="optional"/>
+    <xs:attribute name="Start" use="required" type="serviceStartType"/>
+    <xs:attribute name="Type" use="required" type="serviceTypeType"/>
+    <xs:attribute name="DependOnGroup" type="xs:string" use="optional"/>
+    <xs:attribute name="DependOnService" type="xs:string" use="optional"/>
+    <xs:attribute name="ErrorControl" use="optional" type="errorControlType"/>
+    <xs:attribute name="OEMExtensible" type="OEMExtensibleType" use="optional" default="No"/>
+
+    <!--
+        <xs:attribute name="FailureActionFlag" type="xs:boolean" use="optional"/>
+        -->
+  </xs:complexType>
+  <!-- End of Service related types-->
+
+
+  <!-- Service group configurations -->
+  <xs:complexType name="svcHostGroupType">
+    <xs:attribute name="Name" type="SvcHostGroupNameType" use="required"/>
+    <xs:attribute name="CoInitializeSecurityParam" type="xs:boolean" use="optional"/>
+    <xs:attribute name="CoInitializeSecurityAllowLowBox" type="xs:boolean" use="optional"/>
+    <xs:attribute name="CoInitializeSecurityAppId" type="xs:string" use="optional"/>
+    <xs:attribute name="DefaultRpcStackSize" type="xs:integer" use="optional"/>
+    <xs:attribute name="SystemCritical" type="xs:boolean" use="optional"/>
+    <xs:attribute name="AuthenticationLevel" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Default"/>
+          <xs:enumeration value="None"/>
+          <xs:enumeration value="Connect"/>
+          <xs:enumeration value="Pkt"/>
+          <xs:enumeration value="PktIntegrity"/>
+          <xs:enumeration value="PktPrivacy"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="AuthenticationCapabilities" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="(None|MutualAuth|StaticCloaking|DynamicCloaking|AnyAuthority|MakeFullSIC|Default|SecureRefs|AccessControl|AppId|Dynamic|RequireFullSIC|AutoImpersonate|NoCustomMarshal|DisableAAA)( (None|MutualAuth|StaticCloaking|DynamicCloaking|AnyAuthority|MakeFullSIC|Default|SecureRefs|AccessControl|AppId|Dynamic|RequireFullSIC|AutoImpersonate|NoCustomMarshal|DisableAAA))*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="ImpersonationLevel" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Default"/>
+          <xs:enumeration value="Anonymous"/>
+          <xs:enumeration value="Identify"/>
+          <xs:enumeration value="Impersonate"/>
+          <xs:enumeration value="Delegate"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <!-- End of ServiceGroup configurations -->
+
+  <!-- BinaryPartition object -->
+  <xs:complexType name="binaryPartitionType">
+    <xs:attribute name="ImageSource" type="xs:string" use="required"/>
+  </xs:complexType>
+  <!-- End of BinaryPartition object -->
+
+  <!-- Begin of BCDStore object -->
+  <xs:complexType name="bcdStoreType">
+    <xs:attribute name="Source" type="xs:string" use="required"/>
+  </xs:complexType>
+  <!-- End of BCDStore object -->
+
+  <!-- ComClass related types -->
+  <xs:complexType name="comBaseType">
+    <xs:sequence>
+      <xs:element name="RegKey" type="regKeyType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:string" use="required"/>
+    <xs:attribute name="TypeLib" type="xs:string" use="optional"/>
+    <xs:attribute name="Version" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="comClassType">
+    <xs:complexContent>
+      <xs:extension base="comBaseType">
+        <xs:attribute name="AppId" type="xs:string" use="optional"/>
+        <xs:attribute name="ProgId" type="xs:string" use="optional"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+        <xs:attribute name="VersionIndependentProgId" type="xs:string" use="optional"/>
+        <xs:attribute name="DefaultIcon" type="xs:string" use="optional"/>
+        <xs:attribute name="SkipInProcServer32" type="xs:boolean" use="optional"/>
+        <xs:attribute name="ThreadingModel" use="optional">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Apartment"/>
+              <xs:enumeration value="Free"/>
+              <xs:enumeration value="Both"/>
+              <xs:enumeration value="Neutral"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="comInterfaceType">
+    <xs:complexContent>
+      <xs:extension base="comBaseType">
+        <xs:attribute name="Name" type="xs:string" use="optional"/>
+        <xs:attribute name="ProxyStubClsId" type="xs:string" use="optional"/>
+        <xs:attribute name="ProxyStubClsId32" type="xs:string" use="optional"/>
+        <xs:attribute name="NumMethods" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Classes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Class" type="comClassType" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Interfaces">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Interface" type="comInterfaceType" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="comServerType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Dll" type="fileType"/>
+      <xs:element ref="Classes"/>
+      <xs:element ref="Interfaces"/>
+      <xs:element ref="Files"/>
+      <xs:element ref="RegKeys"/>
+      <xs:element ref="RegImport"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- End of ComServer related types -->
+
+  <!-- Driver related types -->
+  <xs:complexType name="referenceType">
+    <xs:attribute name="Source" type="xs:string" use="required"/>
+    <xs:attribute name="StagingSubDir" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="driverType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="Files"/>
+      <xs:element ref="RegKeys"/>
+      <xs:element ref="RegImport"/>
+      <xs:element name="Security" type="driverSecurityType">
+        <xs:unique name="UniqueAccessedByCapability">
+          <xs:selector xpath="ps:AccessedByCapability" />
+          <xs:field xpath="@Id" />
+        </xs:unique>
+        <xs:unique name="UniqueAccessedByService">
+          <xs:selector xpath="ps:AccessedByService" />
+          <xs:field xpath="@Name" />
+        </xs:unique>
+        <xs:unique name="UniqueAccessedByApplication">
+          <xs:selector xpath="ps:AccessedByApplication" />
+          <xs:field xpath="@Name" />
+        </xs:unique>
+      </xs:element>
+      <xs:element name="Reference" type="referenceType"/>
+    </xs:choice>
+    <xs:attribute name="InfSource" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Driver related types-->
+
+  <xs:element name="Package">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="1">
+        <xs:element ref="CustomMetadata" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="Macros" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="Capabilities" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="Components" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="Authorization" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+
+      <xs:attribute name="Owner" type="xs:string" use="required"/>
+      <xs:attribute name="Component" type="xs:string" use="required"/>
+      <xs:attribute name="SubComponent" type="xs:string" use="optional"/>
+
+      <xs:attribute name="BinaryPartition" type="xs:boolean" use="optional"/>
+
+      <xs:attribute name="OwnerType" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Microsoft"/>
+            <xs:enumeration value="OEM"/>
+            <xs:enumeration value="SiliconVendor"/>
+            <xs:enumeration value="MobileOperator"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="ReleaseType" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Production"/>
+            <xs:enumeration value="Test"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="Partition" type="xs:string" use="optional"/>
+      <xs:attribute name="Platform" type="xs:string" use="optional"/>
+      <xs:attribute name="GroupingKey" type="xs:string" use="optional"/>
+      <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

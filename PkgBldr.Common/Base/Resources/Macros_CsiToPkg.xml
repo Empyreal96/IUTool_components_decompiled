@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<macros xmlns="urn:Microsoft.WindowsPhone/PackageSchema.v8.00">
+
+<!-- build macros -->
+
+    <macro id="_NTTREE"                      value="$(_NTTREE)"/>
+    <macro id="build.nttree"                 value="$(_NTTREE)"/>
+    <macro id="build.locsrc"                 value="$(_NTTREE)\loc\src\bin"/>
+    <macro id="build.cultureNameString"      value="$(langid)"/>
+
+<!-- 
+     runtime macros : convert a windows runtime macro to a phone runtime 
+                      macro.  in most cases they are the same but need to 
+                      be mapped to avoid an unresolved macro warning.
+-->
+
+    <macro id="runtime.root"                 value="$(runtime.root)"/>
+    <macro id="runtime.system32"             value="$(runtime.system32)"/>
+    <macro id="runtime.windows"              value="$(runtime.windows)"/>
+    <macro id="runtime.fonts"                value="$(runtime.windows)\fonts"/>
+    <macro id="runtime.inf"                  value="$(runtime.windows)\inf"/>
+    <macro id="runtime.system"               value="$(runtime.windows)\system"/>
+    <macro id="runtime.systemRoot"           value="$(runtime.windows)"/>
+    <macro id="runtime.wbem"                 value="$(runtime.windows)\system32\wbem"/>
+    <macro id="runtime.bootDrive"            value="$(runtime.root)"/>
+    <macro id="runtime.drivers"              value="$(runtime.system32)\drivers"/>
+    <macro id="runtime.programData"          value="$(runtime.root)\ProgramData"/>
+    <macro id="runtime.programFiles"         value="$(runtime.root)\Program Files"/>
+
+    <macro id="ERROR"                         value="$(ERROR)"/>
+    <macro id="runtime.documentsSettings"     value="$(ERROR)"/>
+    <macro id="runtime.userProfile"           value="$(ERROR)"/>
+    <macro id="runtime.public"                value="$(ERROR)"/>
+
+  <!-- macro id="runtime.userProfile"          value="$(ERROR)"/>
+    <macro id="runtime.public"               value="$(ERROR)"/ -->
+
+  
+<!--
+     registry key macros : 1:1 csi -> pkg macro map
+-->
+  
+  <macro
+    id="hklm.system"
+    value="$(hklm.system)"
+      />
+  <macro
+      id="hklm.software"
+      value="$(hklm.software)"
+      />
+  <macro
+      id="hklm.hardware"
+      value="$(hklm.hardware)"
+      />
+  <macro
+      id="hklm.sam"
+      value="$(hklm.sam)"
+      />
+  <macro
+      id="hklm.security"
+      value="$(hklm.security)"
+      />
+  <macro
+      id="hklm.bcd"
+      value="$(hklm.bcd)"
+      />
+  <macro
+      id="hklm.drivers"
+      value="$(hklm.drivers)"
+      />
+  <macro
+      id="hkuser.default"
+      value="$(hkuser.default)"
+      />
+  <macro
+      id="hkcu.root"
+      value="$(hkcu.root)"
+      />
+  <macro
+      id="hklm.services"
+      value="$(hklm.services)"
+      />
+  
+<!-- security macros -->
+
+    <macro id="build.wrpFileSddl"      	     value="O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:P(A;;FA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;GRGX;;;BA)(A;;GRGX;;;SY)(A;;GRGX;;;BU)(A;;GRGX;;;S-1-15-2-1)S:(AU;FASA;0x000D0116;;;WD)"/>
+    <macro id="build.wrpDirSddl"             value="O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:P(A;CIOI;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CIOI;GRGX;;;SY)(A;CIOI;GRGX;;;BA)(A;CIOI;GRGX;;;BU)(A;CIOI;GRGX;;;S-1-15-2-1)S:(AU;FASA;SDWDWOFW;;;WD)"/>
+    <macro id="build.wrpRegKeySddl"          value="O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:P(A;CI;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CI;GR;;;SY)(A;CI;GR;;;BA)(A;CI;GR;;;BU)(A;CI;GR;;;S-1-15-2-1)"/>
+    <macro id="build.wrpParentDirSddl"       value="O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:P(A;CI;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x1301bf;;;SY)(A;IOCIOI;GA;;;SY)(A;;0x1301bf;;;BA)(A;IOCIOI;GA;;;BA)(A;CIOI;GRGX;;;BU)(A;OICIIO;GA;;;CO)(A;CIOI;GRGX;;;S-1-15-2-1)"/>
+
+<!--
+    <macro id=""      value=""/>
+    <macro id=""      value=""/>
+    <macro id=""      value=""/>
+-->
+
+</macros>

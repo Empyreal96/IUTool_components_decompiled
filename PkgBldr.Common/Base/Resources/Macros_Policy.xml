@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<macros xmlns="urn:Microsoft.WindowsPhone/PackageSchema.v8.00">
+
+<!-- 
+     runtime macros : convert a windows runtime macro to a phone runtime 
+                      macro.  in most cases they are the same but need to 
+                      be mapped to avoid an unresolved macro warning.
+-->
+
+  <!-- device side macros -->
+  <macro id="runtime.root"                value=""/>
+  <macro id="runtime.windows"             value="$(runtime.root)\windows"/>
+  <macro id="runtime.system32"            value="$(runtime.windows)\System32"/>
+
+
+  <!--
+     registry key macros: lets resolve these asap
+-->
+  
+  <macro
+    id="hklm.system"
+    value="HKEY_LOCAL_MACHINE\SYSTEM"
+      />
+  <macro
+      id="hklm.software"
+      value="HKEY_LOCAL_MACHINE\Software"
+      />
+  <macro
+      id="hklm.hardware"
+      value="HKEY_LOCAL_MACHINE\Hardware"
+      />
+  <macro
+      id="hklm.sam"
+      value="HKEY_LOCAL_MACHINE\SAM"
+      />
+  <macro
+      id="hklm.security"
+      value="HKEY_LOCAL_MACHINE\Security"
+      />
+  <macro
+      id="hklm.bcd"
+      value="HKEY_LOCAL_MACHINE\BCD"
+      />
+  <macro
+      id="hklm.drivers"
+      value="HKEY_LOCAL_MACHINE\Drivers"
+      />
+  <macro
+      id="hkuser.default"
+      value="HKEY_Users\.Default"
+      />
+  <macro
+      id="hkcu.root"
+      value="HKEY_CURRENT_USER"
+      />
+  
+<!--
+    <macro id=""      value=""/>
+    <macro id=""      value=""/>
+    <macro id=""      value=""/>
+-->
+
+</macros>

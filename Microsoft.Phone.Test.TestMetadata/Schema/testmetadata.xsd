@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File Name:
+  
+    testmetadata.xsd
+    
+  Abstract:
+  
+    This file defines the schema for test metadata that will be defined for each test case binary.
+    
+  Owner:
+    
+    Test Architecture Leadership Team (TALT).
+    
+  History:
+  
+        Description                                        Author    Date
+    1.  Schema defined.                                    VSoni     06/29/2011
+  
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.microsoft.com/WindowsPhone/2011/TestMetadata.xsd" xmlns="http://schemas.microsoft.com/WindowsPhone/2011/TestMetadata.xsd" xmlns:mstns="http://schemas.microsoft.com/WindowsPhone/2011/TestMetadata.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <!--
+  
+    Common Enumerations.
+  
+  -->
+  <!-- Assembly Type -->
+  <xs:simpleType name="AssemblyTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Managed" />
+      <xs:enumeration value="Native" />
+      <xs:enumeration value="Script" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Harness Type -->
+  <xs:simpleType name="HarnessTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Tux" />
+      <xs:enumeration value="TuxNet" />
+      <xs:enumeration value="Taef" />
+      <xs:enumeration value="Commandline" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Priority -->
+  <xs:simpleType name="PriorityEnum">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0" />
+      <xs:maxExclusive value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Test Type -->
+  <xs:simpleType name="TestTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bvt" />
+      <xs:enumeration value="Functional" />
+      <xs:enumeration value="Stress" />
+      <xs:enumeration value="Performance" />
+      <xs:enumeration value="UnitTest" />
+      <xs:enumeration value="Manual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--
+  
+    Common Types.
+  
+  -->
+  <!-- Non Empty String. -->
+  <xs:simpleType name="NonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Parameter Type. -->
+  <xs:complexType name="ParameterType">
+    <xs:sequence>
+      <xs:element name="Parameter" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType mixed="true">
+          <xs:attribute name="Name" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- File Dependency Type. -->
+  <xs:complexType name="BinaryDependencyType">
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  <!-- Package Dependency Type. -->
+  <xs:complexType name="PackageDependencyType">
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  <!-- Dependency Hint. -->
+  <xs:complexType name="DependencyHintType">
+    <xs:attribute name="DllName" type="xs:string" />
+    <xs:attribute name="PackageName" type="xs:string" />
+  </xs:complexType>
+  <!-- Remote File Dependency Type. -->
+  <xs:complexType name="RemoteFileDependencyType">
+    <xs:attribute name="SourcePath" type="xs:string" />
+    <xs:attribute name="Source" type="xs:string" />
+    <xs:attribute name="DestinationPath" type="xs:string" />
+    <xs:attribute name="Destination" type="xs:string" />
+    <xs:attribute name="Tags" type="xs:string" use="optional" />
+    <xs:attribute name="IsWow" type="xs:boolean" use="optional" />
+    <xs:attribute name="PackageArchitecture" type="xs:string" use="optional" />
+  </xs:complexType>
+  <!-- Environment Path Type. -->
+  <xs:complexType name="EnvironmentPathDpendencyType">
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  <!-- Test Dependencies.-->
+  <xs:complexType name="DependenciesType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Binary" type="BinaryDependencyType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Package" type="PackageDependencyType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="RemoteFile" type="RemoteFileDependencyType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EnvironmentPath" type="EnvironmentPathDpendencyType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="SetupTaskType">
+    <xs:sequence>
+      <xs:element name="CommandLineTask" type="CommandLineTaskType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CleanupTaskType">
+    <xs:sequence>
+      <xs:element name="CommandLineTask" type="CommandLineTaskType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExecuteTaskType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="CommandLineTask" type="CommandLineTaskType" />
+      <xs:element name="TuxTestCaseTask" type="TuxTestCaseTaskType" />
+      <xs:element name="TuxNetTestCaseTask" type="TuxNetTestCaseTaskType" />
+      <xs:element name="TaefTestCaseTask" type="TaefTestCaseTaskType" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="TestCaseType">
+    <xs:sequence>
+      <xs:group ref="CommonTestMetadata" />
+      <xs:element name="ExecuteTasks" type="ExecuteTaskType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="Id" use="required" />
+  </xs:complexType>
+  <xs:complexType name="SourceRefType">
+    <xs:attribute name="FileName" />
+    <xs:attribute name="LineNumber" />
+  </xs:complexType>
+  <xs:complexType name="TestMethodType">
+    <xs:sequence>
+      <xs:group ref="CommonTestMetadata" />
+      <xs:element name="SourceRef" type="SourceRefType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TestCase" type="TestCaseType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Name" use="required" />
+  </xs:complexType>
+  <xs:complexType name="TestSuiteType">
+    <xs:sequence>
+      <xs:group ref="CommonTestMetadata" />
+      <xs:element name="SetupTasks" type="SetupTaskType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TestMethod" type="TestMethodType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="CleanupTasks" type="CleanupTaskType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="Name" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ConstraintsType">
+    <xs:sequence>
+      <xs:element name="Constraint" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Value" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+          </xs:sequence>
+          <xs:attribute name="Name" use="required" />
+          <xs:attribute name="Operator" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!--
+  
+    Common Referenced Groups.
+  
+  -->
+  <!-- Common Test metadata. -->
+  <xs:group name="CommonTestMetadata">
+    <xs:sequence>
+      <xs:element name="Description" type="NonEmptyString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TestType" type="TestTypeEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Priority" type="PriorityEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Parameters" type="ParameterType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Constraints" type="ConstraintsType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+    Test metadata schema.
+    
+  -->
+  <xs:element name="Metadata">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TestMetadata" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TestAssembly">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Owner" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="FeaturePath" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="AssemblyType" type="AssemblyTypeEnum" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Harness" type="HarnessTypeEnum" minOccurs="1" maxOccurs="1" />
+                    <xs:group ref="CommonTestMetadata" />
+                    <xs:element name="SetupTasks" type="SetupTaskType" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="TestSuite" type="TestSuiteType" minOccurs="1" maxOccurs="unbounded" />
+                    <xs:element name="CleanupTasks" type="CleanupTaskType" minOccurs="0" maxOccurs="1" />
+                  </xs:sequence>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dependencies" type="DependenciesType" minOccurs="0" maxOccurs="1" />
+        <xs:element name="RequiresReflash" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TuxTestCaseTaskType">
+    <xs:sequence>
+      <xs:element name="Dll" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Id" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Arguments" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ExtensionDll" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ExtensionArguments" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TuxNetTestCaseTaskType">
+    <xs:sequence>
+      <xs:element name="Assembly" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Suite" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TestName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="UserData" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TaefTestCaseTaskType">
+    <xs:sequence>
+      <xs:element name="Assembly" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TestName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="UserData" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CommandLineTaskType">
+    <xs:sequence>
+      <xs:element name="Exe" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Arguments" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

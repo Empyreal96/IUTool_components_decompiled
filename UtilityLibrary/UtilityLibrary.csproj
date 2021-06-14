@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{37BA0760-0C2C-4D4F-993F-94BE80CECF6C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Microsoft</RootNamespace>
+    <AssemblyName>UtilityLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\CommandLine\ArgumentAttribute.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\CommandLine\ArgumentType.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\CommandLine\DefaultArgumentAttribute.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\CommandLine\ErrorReporter.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\CommandLine\IArgumentHolder.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\CommandLine\Parser.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\EtwSession.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\EventTraceProperties.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\Facades\FileNames.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\Facades\RegularExpressions.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\Factories\ClassFactory.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\LoggingModeConstant.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\NativeMethods.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\RetryHelper.cs" />
+    <Compile Include="MobileDevices\TestInfrastructure\UtilityLibrary\TraceLevel.cs" />
+    <Compile Include="Mobile\ProcessExtensions.cs" />
+    <Compile Include="Mobile\ProcessLauncher.cs" />
+    <Compile Include="Phone\MIT\Common\UtilityLibrary\FileHelper.cs" />
+    <Compile Include="Phone\MIT\Common\UtilityLibrary\FileStreamExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestInfra\UtilityLibrary\LazyDisposable.cs" />
+    <Compile Include="TestInfra\UtilityLibrary\TypicalException.cs" />
+    <Compile Include="TestInfra\UtilityLibrary\WindowsJob.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

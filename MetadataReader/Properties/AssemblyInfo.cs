@@ -1,0 +1,47 @@
+﻿using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
+
+[assembly: AssemblyVersion("8.1.1702.2001")]
+[assembly: InternalsVisibleTo("ReflectionAdds, PublicKey=00240000048000009400000006020000002400005253413100040000010001003ba7cafa7b309a54affe4da0b4f38c5b966c27e2c7920662b39d0d0fe867fdb8195020cb335a1b75cca15b5f4f5817b0d547ef7e88d2b76f6ccff01b89f572d9eda8b3b438b39ede26a1e88cd18b02b640e36538c4806e1a846cd6ae080412df58a73ca88551886ef79dbd8bbb1d83f52b9f2318504866907ce23b78d2549cef")]
+[assembly: InternalsVisibleTo("MetadataReader, PublicKey=00240000048000009400000006020000002400005253413100040000010001003ba7cafa7b309a54affe4da0b4f38c5b966c27e2c7920662b39d0d0fe867fdb8195020cb335a1b75cca15b5f4f5817b0d547ef7e88d2b76f6ccff01b89f572d9eda8b3b438b39ede26a1e88cd18b02b640e36538c4806e1a846cd6ae080412df58a73ca88551886ef79dbd8bbb1d83f52b9f2318504866907ce23b78d2549cef")]
+[assembly: InternalsVisibleTo("Microsoft.Phone.Test.TestMetadata, PublicKey=00240000048000009400000006020000002400005253413100040000010001003ba7cafa7b309a54affe4da0b4f38c5b966c27e2c7920662b39d0d0fe867fdb8195020cb335a1b75cca15b5f4f5817b0d547ef7e88d2b76f6ccff01b89f572d9eda8b3b438b39ede26a1e88cd18b02b640e36538c4806e1a846cd6ae080412df58a73ca88551886ef79dbd8bbb1d83f52b9f2318504866907ce23b78d2549cef")]
+[assembly: InternalsVisibleTo("TestMetadataTool, PublicKey=00240000048000009400000006020000002400005253413100040000010001003ba7cafa7b309a54affe4da0b4f38c5b966c27e2c7920662b39d0d0fe867fdb8195020cb335a1b75cca15b5f4f5817b0d547ef7e88d2b76f6ccff01b89f572d9eda8b3b438b39ede26a1e88cd18b02b640e36538c4806e1a846cd6ae080412df58a73ca88551886ef79dbd8bbb1d83f52b9f2318504866907ce23b78d2549cef")]
+[assembly: SuppressMessage("Microsoft.Design", "CA2210:AssembliesShouldHaveValidStrongNames")]
+[assembly: SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope = "namespace", Target = "Microsoft.MetadataReader")]
+[assembly: SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "Microsoft.MetadataReader.AssemblyFactory.#CreateAssembly(System.Reflection.Adds.ITypeUniverse,System.Reflection.Adds.MetadataFile,System.Reflection.Adds.MetadataFile[],Microsoft.MetadataReader.IReflectionFactory,System.String,System.String[])")]
+[assembly: SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "Microsoft.MetadataReader.AssemblyFactory.#CreateAssembly(Microsoft.MetadataReader.MetadataOnlyModule,System.String)")]
+[assembly: SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "Microsoft.MetadataReader.AssemblyNameHelper.#GetAssemblyName(Microsoft.MetadataReader.MetadataOnlyModule)")]
+[assembly: SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "Microsoft.MetadataReader.AssemblyNameHelper.#GetAssemblyNameFromRef(System.Reflection.Adds.Token,Microsoft.MetadataReader.MetadataOnlyModule,Microsoft.MetadataReader.IMetadataAssemblyImport)")]
+[assembly: SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "Microsoft.MetadataReader.Loader.#ResolveModule(System.Reflection.Mock.Assembly,System.String)")]
+[assembly: SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyTypeReference.#Assembly")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "fieldType", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyFieldInfo.#ParseDefaultValue()")]
+[assembly: SuppressMessage("Microsoft.Security", "CA2143:TransparentMethodsShouldNotDemandFxCopRule", Scope = "type", Target = "Microsoft.MetadataReader.UnmanagedStringMemoryHandle")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "e", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyAssembly.#GetCodeBaseFromManifestModule(Microsoft.MetadataReader.MetadataOnlyModule)")]
+[assembly: SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyAssembly.#GetManifestResourceStream(System.String)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "callConv", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyFieldInfo.#Initialize()")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "callConv", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyFieldInfo.#ParseDefaultValue()")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "refCount", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyModule.#Dispose(System.Boolean)")]
+[assembly: SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyModule.#FindTypes(System.Reflection.Mock.TypeFilter,System.Object)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "callConv", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyModule.#GetEnumUnderlyingType(System.Reflection.Adds.Token)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "callConv", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyModule.#ResolveMethodSpec(System.Reflection.Adds.Token,Microsoft.MetadataReader.GenericContext)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "callConv", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyPropertyInfo.#.ctor(Microsoft.MetadataReader.MetadataOnlyModule,System.Reflection.Adds.Token,System.Reflection.Mock.Type[],System.Reflection.Mock.Type[])")]
+[assembly: SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyTypeDef.#GetMember(System.String,System.Reflection.MemberTypes,System.Reflection.BindingFlags)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "val", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyTypeDef.#StructLayoutAttribute")]
+[assembly: SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyTypeVariableRef.#Equals(System.Reflection.Mock.Type)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "oldIdx", Scope = "member", Target = "Microsoft.MetadataReader.SignatureUtil.#ExtractType(System.Byte[],System.Int32&,Microsoft.MetadataReader.MetadataOnlyModule,Microsoft.MetadataReader.GenericContext,System.Boolean)")]
+[assembly: SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "fAllowPinned", Scope = "member", Target = "Microsoft.MetadataReader.SignatureUtil.#ExtractType(System.Byte[],System.Int32&,Microsoft.MetadataReader.MetadataOnlyModule,Microsoft.MetadataReader.GenericContext,System.Boolean)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "ret", Scope = "member", Target = "Microsoft.MetadataReader.TypeSpec.#Blob")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "e", Scope = "member", Target = "Microsoft.MetadataReader.Utility.#IsValidPath(System.String)")]
+[assembly: SuppressMessage("Microsoft.Performance", "CA1804:RemoveUnusedLocals", MessageId = "callConv", Scope = "member", Target = "Microsoft.MetadataReader.MetadataOnlyMethodBody.#LocalVariables")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyProduct("Microsoft (R) Windows (R) Operating System")]
+[assembly: AssemblyCopyright("Copyright (c) Microsoft Corporation. All rights reserved.")]
+[assembly: ComVisible(false)]
+[assembly: Guid("e77d099d-2743-495a-a9c4-cb6f04124067")]
+[assembly: AssemblyFileVersion("8.1.1702.02001")]
+[assembly: AssemblyInformationalVersion("8.1.1702.02001 refs/heads/develop [63e09cf3beeac1440b4c0d2caa425a16c88a3963]")]

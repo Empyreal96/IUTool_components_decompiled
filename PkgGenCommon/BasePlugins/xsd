@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<xs:schema
+    targetNamespace="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+    xmlns="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+    xmlns:ps="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+  <!-- Here for use by PkgGen. Re-uses the types in the base schema (ProjSchema.xsd).
+       These elements represent the base plugin types.
+  -->
+  <xs:element name="OSComponent" type="osComponentType"/>
+  <xs:element name="Application" type="applicationType"/>
+  <xs:element name="AppResource" type="appResourceType"/>
+  <xs:element name="ComServer" type="comServerType"/>
+  <xs:element name="Driver" type="driverType"/>
+  <xs:element name="Service" type="serviceType"/>
+  <xs:element name="SvcHostGroup" type="svcHostGroupType"/>
+  <xs:element name="BinaryPartition" type="binaryPartitionType"/>
+  <xs:element name="BCDStore" type="bcdStoreType"/>
+
+  <!-- Additional Built-In Plugins -->
+
+  <!-- WinRT Host -->
+  <xs:element name="WinRTHost">
+    <xs:annotation>
+      <xs:documentation>
+        Describes a modern COM object to be registered by the package.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="Dll" type="fileType" />
+        <xs:element name="WinRTClass" type="winRTHost_Class" />
+
+        <!-- Additional OSComponent Information -->
+        <xs:element ref="Files"/>
+        <xs:element ref="RegKeys"/>
+        <xs:element ref="RegImport"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="winRTHost_Class">
+    <xs:annotation>
+      <xs:documentation>
+        Describes a modern COM class to be registered as part of a WinRTHost.
+      </xs:documentation>
+    </xs:annotation>
+    <!-- Identifiers (Required) -->
+    <xs:attribute name="Id" use="required" type="GuidType" />
+    <xs:attribute name="ActivatableId" use="required" type="xs:string" />
+    
+    <!-- Additional Information (Optional) -->
+    <xs:attribute name="ActivationType" use="optional" default="InProc">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="InProc"/>
+          <xs:enumeration value="OutOfProc"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="TrustLevel" use="optional" default="Base">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Base"/>
+          <xs:enumeration value="Partial"/>
+          <xs:enumeration value="Full"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="ThreadingModel" use="optional" default="Both">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Both"/>
+          <xs:enumeration value="STA"/>
+          <xs:enumeration value="MTA"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  
+</xs:schema>
