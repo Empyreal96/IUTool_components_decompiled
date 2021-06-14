@@ -1,7 +1,7 @@
 # IUTools .NET Components Decompiled
  Some dotnet binaries and assemblies from Windows Phone's IUTools, some may be useful, some may not be..
 
-*This code is 'as-is' from "dnSpy's" output.*
+*This code is 'as-is' from "dnSpy's" output. Expect some errors!*
 
 **List of files decompiled with dnSpy**
 
